@@ -9,6 +9,13 @@ const context = {window:{}}; vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(root,'assets/js/data.js'),'utf8').replace('window.ARRA =','var ARRA = window.ARRA ='),context);
 const data = context.window.ARRA;
 const homepage = fs.readFileSync(path.join(root,'index.html'),'utf8');
+// The entire photo is the opener, even when the mobile zoom icon is hidden.
+const lightboxImage = homepage.match(/<img\b[^>]*\bid="lightbox-image"[^>]*>/)?.[0];
+assert(lightboxImage, 'Gallery zoom requires the lightbox image ID');
+assert(!/\bsrcset=/.test(lightboxImage), 'A fixed srcset must not override the selected full-size photo');
+for (const id of ['gallery-dialog','lightbox-title','lightbox-category','lightbox-description','lightbox-count']) {
+  assert(homepage.includes(`id="${id}"`), `Missing gallery control: ${id}`);
+}
 assert(homepage.includes('property="og:site_name"'));
 assert(homepage.includes('https://arraeventsbymonicatrif.ro/assets/images/arra-social-logo.png'));
 assert(/property="og:image:type" content="image\/png"/.test(homepage));
