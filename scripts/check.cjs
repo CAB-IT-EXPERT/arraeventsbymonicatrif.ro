@@ -9,6 +9,10 @@ const context = {window:{}}; vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(root,'assets/js/data.js'),'utf8').replace('window.ARRA =','var ARRA = window.ARRA ='),context);
 const data = context.window.ARRA;
 const homepage = fs.readFileSync(path.join(root,'index.html'),'utf8');
+const instagramUrls = [...homepage.matchAll(/https:\/\/www\.instagram\.com\/[^"\s<]+/g)].map(match => match[0]);
+assert.equal(instagramUrls.length, 4, 'Instagram must be present in three links and structured data');
+assert(instagramUrls.every(url => url === 'https://www.instagram.com/arraeventsbymonicatrif/'), 'Use the Instagram profile most recently confirmed by the client');
+assert(homepage.includes('>@arraeventsbymonicatrif ↗</a'), 'Display the correct Instagram handle');
 // The entire photo is the opener, even when the mobile zoom icon is hidden.
 const lightboxImage = homepage.match(/<img\b[^>]*\bid="lightbox-image"[^>]*>/)?.[0];
 assert(lightboxImage, 'Gallery zoom requires the lightbox image ID');
@@ -58,6 +62,15 @@ for (const field of ['name','phone','email','event','location','guests','message
 assert(message.includes('19 iunie 2027'));
 assert(buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('De stabilit'));
 assert(!buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('undefined'));
-assert(data.testimonials.every(review=>review.verified===false),'Sample testimonials must not be marked verified');
+assert(data.testimonials.length >= 3 && data.testimonials.every(review=>review.verified===true),'Keep the reviews confirmed by the user approved and visible');
+assert(data.testimonials.every(review=>review.author==='Client ARRA Events'),'Preserve the anonymous attribution; do not invent client names');
+const testimonialSection = homepage.match(/<section\b[^>]*\bid="testimoniale"[^>]*>/)?.[0];
+assert(testimonialSection && !/\bhidden\b/.test(testimonialSection), 'The approved testimonial section must remain visible');
+const sectionOrder = [...homepage.matchAll(/<section\b[^>]*\bid="([^"]+)"/g)].map(match=>match[1]);
+assert.deepEqual(sectionOrder.slice(0,4), ['acasa','introducere','testimoniale','povestea'], 'Feature reviews directly after the introduction, before the ARRA story');
+const testimonialLinks = [...homepage.matchAll(/<a\b[^>]*href="#testimoniale"[^>]*>/g)];
+assert(testimonialLinks.length === 2 && testimonialLinks.every(([link])=>!/\bhidden\b/.test(link)), 'Keep desktop and mobile testimonial navigation visible');
+assert(!/Texte-model|MODEL DE TESTIMONIAL|Modele de testimoniale|în așteptarea validării/i.test(homepage), 'Remove all public draft labels and pending-validation notices');
+assert(fs.readFileSync(path.join(root,'assets/js/main.js'),'utf8').includes('ARRA.testimonials.filter(item => item.verified === true)'), 'Never render unverified testimonials');
 assert(!fs.readFileSync(path.join(root,'assets/js/main.js'),'utf8').includes("replace('assets/video/', 'assets/previews/')"),'Inline playback must use full-quality masters');
-console.log(`PASS: ${required.size} local files; 31 client preview photos (31 originals retained); 11 full-quality videos; HTML anchors; unique IDs; JS syntax; WhatsApp encoding/fields/date/fallbacks; draft review labels.`);
+console.log(`PASS: ${required.size} local files; 31 client preview photos (31 originals retained); 11 full-quality videos; HTML anchors; unique IDs; JS syntax; WhatsApp encoding/fields/date/fallbacks; approved reviews without draft labels.`);

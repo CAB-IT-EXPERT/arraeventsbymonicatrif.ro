@@ -446,8 +446,11 @@ if (typeof document !== "undefined")
       video.addEventListener('pause', () => video.closest('.reel').classList.remove('is-previewing'));
     });
 
-    // Draft testimonials are explicitly marked. No ratings or fabricated Review schema.
-    const reviewTrack = $("#testimonials-track"),
+    // Only render approved reviews. The current three were confirmed by the user.
+    // Keep future unapproved entries out of the public carousel.
+    const reviewSection = $("#testimoniale"),
+      reviews = ARRA.testimonials.filter(item => item.verified === true),
+      reviewTrack = $("#testimonials-track"),
       reviewDots = $("#review-dots"),
       reviewPause = $("#review-autoplay");
     let reviewIndex = 0,
@@ -455,13 +458,17 @@ if (typeof document !== "undefined")
       reviewsVisible = false,
       reviewsPaused = false,
       reviewsHovered = false;
-    reviewTrack.innerHTML = ARRA.testimonials
+    if (reviews.length < 3) {
+      reviewSection.hidden = true;
+      $$('a[href="#testimoniale"]').forEach(link => { link.hidden = true; });
+    }
+    reviewTrack.innerHTML = reviews
       .map(
         (item, index) =>
           `<figure class="testimonial${index === 0 ? " current" : ""}" aria-hidden="${index !== 0}" ${index !== 0 ? "inert" : ""}><span class="quote-mark" aria-hidden="true">“</span><blockquote>${escape(item.text)}</blockquote><figcaption><cite>${escape(item.category)}${item.verified ? ` · ${escape(item.author)}` : ""}</cite></figcaption></figure>`,
       )
       .join("");
-    reviewDots.innerHTML = ARRA.testimonials
+    reviewDots.innerHTML = reviews
       .map(
         (_, i) =>
           `<button type="button" aria-label="Testimonialul ${i + 1}" aria-pressed="${i === 0}" class="${i === 0 ? "active" : ""}"></button>`,
@@ -470,6 +477,8 @@ if (typeof document !== "undefined")
     function scheduleReview() {
       clearTimeout(reviewTimer);
       if (
+        !reviewSection.hidden &&
+        reviews.length >= 3 &&
         !reviewsPaused &&
         reviewsVisible &&
         !reviewsHovered &&
@@ -480,8 +489,9 @@ if (typeof document !== "undefined")
         reviewTimer = setTimeout(() => setReview(reviewIndex + 1), 9000);
     }
     function setReview(index) {
+      if (!reviews.length) return;
       reviewIndex =
-        (index + ARRA.testimonials.length) % ARRA.testimonials.length;
+        (index + reviews.length) % reviews.length;
       $$(".testimonial").forEach((slide, i) => {
         slide.classList.toggle("current", i === reviewIndex);
         slide.setAttribute("aria-hidden", String(i !== reviewIndex));
@@ -526,7 +536,7 @@ if (typeof document !== "undefined")
     $(".testimonial-slider").addEventListener("focusout", () =>
       setTimeout(scheduleReview, 0),
     );
-    if ("IntersectionObserver" in window)
+    if (!reviewSection.hidden && "IntersectionObserver" in window)
       new IntersectionObserver(
         (entries) => {
           reviewsVisible = entries[0].isIntersecting;

@@ -31,10 +31,10 @@
   }
   const progress = document.querySelector(".scroll-progress");
   const parallax = [...document.querySelectorAll("[data-parallax]")];
-  const sections = [...document.querySelectorAll("main section[id]")];
+  const sections = [...document.querySelectorAll("main section[id]:not([hidden])")];
   const timeline = document.querySelector('.scroll-timeline');
   const timelineSteps = timeline ? [...timeline.children] : [];
-  const links = [...document.querySelectorAll(".desktop-nav a")];
+  const links = [...document.querySelectorAll(".desktop-nav a:not([hidden])")];
   let lastScrollY = scrollY;
   let scrollDirection = 'down';
   let layout = { heroEnd: 0, length: 0, sections: [], badges: [] };

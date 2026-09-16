@@ -348,23 +348,24 @@ ARRA.reels = [
     duration: "7 SEC",
   },
 ];
-// Set verified:true only after the client confirms the quote and its public attribution.
+// Existing reviews confirmed authentic by the user on 2026-09-16.
+// Keep the supplied wording and anonymous attribution; approval is not third-party verification.
 ARRA.testimonials = [
   {
     category: "Nuntă",
-    verified: false,
+    verified: true,
     author: "Client ARRA Events",
     text: "De la prima discuție am simțit că suntem pe mâini bune. Monica a înțeles exact atmosfera pe care ne-o doream și a transformat fiecare idee într-un decor elegant, cald și perfect echilibrat. În ziua evenimentului am putut pur și simplu să ne bucurăm de moment, fără stres. Totul a fost impecabil.",
   },
   {
     category: "Organizare completă",
-    verified: false,
+    verified: true,
     author: "Client ARRA Events",
     text: "Profesionalism, creativitate și foarte multă atenție la detalii. Fiecare element a fost gândit cu grijă, iar rezultatul final a depășit ceea ce ne imaginaserăm. Cel mai mult am apreciat faptul că Monica a fost mereu prezentă, calmă și atentă la orice detaliu.",
   },
   {
     category: "Cerere în căsătorie",
-    verified: false,
+    verified: true,
     author: "Client ARRA Events",
     text: "Mi-am dorit un moment special, dar nu știam exact cum să îl transform în realitate. Echipa ARRA a construit o atmosferă absolut superbă, elegantă și foarte personală. Totul a fost pregătit până la cel mai mic detaliu și reacția ei a spus totul.",
   },

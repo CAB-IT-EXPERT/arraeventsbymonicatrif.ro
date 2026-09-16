@@ -30,8 +30,8 @@ Website-ul este pregătit pentru rădăcina domeniului, nu pentru publicare înt
 - Galerie filtrabilă, încărcare progresivă, vizualizare mare, navigare cu săgeți/tastatură și gest orizontal pe fotografia din galerie.
 - Filme principale cu redare/pauză/sunet, modal video cu controale native, reels orizontale și redare automată limitată la elementele vizibile.
 - Design responsive, animații discrete la scroll, preferință de mișcare redusă respectată, navigare de la tastatură și link pentru salt la conținut.
-- Secțiuni succesive: poveste, valori, servicii, filme, filosofie, proces, portofoliu, reels, diferențiatori, testimoniale, contact. Testimonialele și contactul nu sunt alăturate pe același rând.
-- Instagram, Facebook și TikTok, cu adresele furnizate. Blocul „Datele companiei”, IBAN și SWIFT au fost eliminate la cererea utilizatorului.
+- După hero și introducere, testimonialele apar înainte de poveste pentru vizibilitate crescută. Urmează valorile, serviciile, filmele, filosofia, procesul, portofoliul, reels, diferențiatorii și contactul. Meniurile desktop și mobil respectă noua ordine.
+- Instagram: `https://www.instagram.com/arraeventsbymonicatrif/`, reconfirmat explicit de utilizator la 16 septembrie 2026, în linkuri, contact și datele structurate. Adresa istorică `arra.eventplanner` nu este folosită pe site. Facebook și TikTok păstrează adresele furnizate. Blocul „Datele companiei”, IBAN și SWIFT au fost eliminate la cererea utilizatorului.
 
 ## Ajustări de design și interacțiune
 
@@ -58,8 +58,8 @@ Adresa `contact@arraeventsbymonicatrif.ro` este afișată cu link `mailto:`. Că
 
 ## De confirmat înainte de lansarea publică
 
-- **Testimonialele sunt texte-model**, nu recenzii verificate. Sunt marcate explicit în pagină. Înlocuiește-le cu feedback autentic și atribuire aprobată înainte de a le publica drept recenzii reale. Nu există stele sau date structurate de rating inventate.
-- În `assets/js/data.js`, testimonialele au `verified: false`. Eticheta repetată de sub fiecare citat a fost eliminată, dar informarea generală „Texte-model…” și denumirea accesibilă păstrează statutul lor real. Schimbă în `true` numai după confirmare, apoi actualizează textele scurte din HTML și informarea generală.
+- Utilizatorul a confirmat explicit la 16 septembrie 2026 că recenziile existente sunt autentice. Secțiunea și navigarea rămân vizibile; toate etichetele de model și notificările de validare au fost eliminate. Textele și atribuirea anonimă „Client ARRA Events” sunt păstrate, fără nume, note sau surse inventate.
+- Câmpul intern `verified: true` din `assets/js/data.js` reflectă această confirmare, nu o verificare independentă. Recenziile adăugate ulterior trebuie aprobate înainte de publicare; caruselul filtrează intrările neaprobate.
 - Titlurile portofoliului sunt editoriale, bazate pe fotografii. Nu pretind numele clienților, data, locația exactă sau rezultate neverificate. Filtrele fără fotografii, inclusiv Corporate, nu sunt afișate.
 - Clienta trebuie să confirme drepturile de utilizare pe website pentru fotografii, persoanele filmate și muzica din videoclipuri. Disponibilitatea pe Instagram nu confirmă automat licența muzicii pentru un website independent.
 - Confirmă că pagina Facebook furnizată (`amazingdecorbyapetreimihaela`) este destinația dorită; linkul este inclus exact conform solicitării, fără a presupune o identitate juridică între pagini.

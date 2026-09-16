@@ -59,11 +59,11 @@
     <link rel="stylesheet" href="assets/css/style.css?v=20260916-pastel">
     <link rel="stylesheet" href="assets/css/whatsapp.css?v=20260916-pastel">
     <link rel="stylesheet" href="assets/css/editorial-preview.css?v=20260916-pastel">
-    <script src="assets/js/data.js?v=20260916-pastel" defer></script>
+    <script src="assets/js/data.js?v=20260916-approved-reviews" defer></script>
     <script src="assets/js/preview-gallery.js?v=20260916-pastel" defer></script>
     <script src="assets/js/reel-carousel.js?v=20260916-pastel" defer></script>
-    <script src="assets/js/main.js?v=20260916-pastel" defer></script>
-    <script src="assets/js/animations.js?v=20260916-pastel" defer></script>
+    <script src="assets/js/main.js?v=20260916-approved-reviews" defer></script>
+    <script src="assets/js/animations.js?v=20260916-approved-reviews" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -95,9 +95,9 @@
             alt="ARRA Events by Monica Trif"></a>
         <nav class="desktop-nav" aria-label="Navigare principală">
           <a class="active" href="#acasa">Acasă</a
+          ><a href="#testimoniale">Testimoniale</a
           ><a href="#povestea">Povestea</a><a href="#servicii">Servicii</a
           ><a href="#portofoliu">Portofoliu</a
-          ><a href="#testimoniale">Testimoniale</a
           ><a href="#contact">Contact</a>
         </nav>
         <a
@@ -153,9 +153,10 @@
         height="130"
         alt="ARRA Events">
       <nav aria-label="Navigare mobil">
-        <a href="#acasa">Acasă</a><a href="#povestea">Povestea</a
+        <a href="#acasa">Acasă</a><a href="#testimoniale">Testimoniale</a
+        ><a href="#povestea">Povestea</a
         ><a href="#servicii">Servicii</a><a href="#portofoliu">Portofoliu</a
-        ><a href="#testimoniale">Testimoniale</a><a href="#contact">Contact</a>
+        ><a href="#contact">Contact</a>
       </nav>
       <a class="button gold" href="tel:+40753037078"
         >Hai să vorbim <span>↗</span></a
@@ -377,6 +378,120 @@
               loading="lazy"
               decoding="async"
               alt="Cerere în căsătorie în fața unei inimi cu flori albe, roz și lila, pe malul lacului">
+          </figure>
+        </div>
+      </section>
+
+      <section
+        class="testimonials-section section"
+        id="testimoniale"
+        aria-labelledby="testimonials-title"
+      >
+        <div class="container">
+          <div class="section-heading centered">
+            <p class="eyebrow reveal">LA FINAL, RĂMÂN EMOȚIILE</p>
+            <h2 id="testimonials-title" class="reveal">
+              Cuvintele lor spun<br><em>povestea.</em>
+            </h2>
+            <p class="section-intro reveal">
+              Cel mai important rezultat este felul în care oamenii își amintesc
+              experiența.
+            </p>
+          </div>
+          <div
+            class="testimonial-slider"
+            role="group"
+            aria-roledescription="carusel"
+            aria-label="Recenzii ale clienților"
+          >
+            <div id="testimonials-track" class="testimonials-track"></div>
+            <div class="testimonial-controls">
+              <button
+                type="button"
+                class="round-button"
+                id="reviews-prev"
+                aria-label="Testimonialul anterior"
+              >
+                ←
+              </button>
+              <div
+                id="review-dots"
+                class="review-dots"
+                role="group"
+                aria-label="Alege testimonialul"
+              ></div>
+              <button
+                type="button"
+                class="round-button"
+                id="reviews-next"
+                aria-label="Testimonialul următor"
+              >
+                →</button
+              ><button
+                type="button"
+                class="review-autoplay"
+                id="review-autoplay"
+                aria-label="Oprește derularea automată a testimonialelor"
+              >
+                Ⅱ
+              </button>
+            </div>
+          </div>
+          <div class="short-reviews stagger">
+            <article class="reveal">
+              <span class="model-label">BOTEZ</span>
+              <p>
+                „Culorile, florile și toate detaliile s-au potrivit perfect. Un
+                eveniment delicat și elegant, exact așa cum ne-am dorit.”
+              </p>
+            </article>
+            <article class="reveal">
+              <span class="model-label">CORPORATE</span>
+              <p>
+                „Echilibrul dintre eleganță, profesionalism și o atmosferă
+                relaxată a reprezentat exact imaginea pe care ne-o doream.”
+              </p>
+            </article>
+            <article class="reveal">
+              <span class="model-label">EXPERIENȚĂ</span>
+              <p>
+                „Monica a avut răbdare să ne asculte și ne-a făcut să simțim că
+                fiecare detaliu contează.”
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="section-photos container">
+          <figure>
+            <img
+              src="assets/images/photo-client30-900.webp"
+              srcset="
+                assets/images/photo-client30-480.webp   480w,
+                assets/images/photo-client30-900.webp   900w,
+                assets/images/photo-client30-1440.webp 1440w
+              "
+              sizes="(max-width: 767px) 100vw, 50vw"
+              width="900"
+              height="675"
+              loading="lazy"
+              decoding="async"
+              alt="Un cuplu în fața inimii florale în nuanțe pastel">
+          </figure>
+          <figure>
+            <img
+              src="assets/images/photo-client31-900.webp"
+              srcset="
+                assets/images/photo-client31-480.webp   480w,
+                assets/images/photo-client31-900.webp   900w,
+                assets/images/photo-client31-1440.webp 1440w
+              "
+              sizes="(max-width: 767px) 100vw, 50vw"
+              width="900"
+              height="675"
+              loading="lazy"
+              decoding="async"
+              alt="Un cuplu zâmbind în fața unui decor în formă de inimă cu flori pastel">
           </figure>
         </div>
       </section>
@@ -1280,124 +1395,6 @@
               loading="lazy"
               decoding="async"
               alt="Panou oval bleu, flori albe și albastre, coloane și lumânări">
-          </figure>
-        </div>
-      </section>
-
-      <section
-        class="testimonials-section section"
-        id="testimoniale"
-        aria-labelledby="testimonials-title"
-      >
-        <div class="container">
-          <div class="section-heading centered">
-            <p class="eyebrow reveal">LA FINAL, RĂMÂN EMOȚIILE</p>
-            <h2 id="testimonials-title" class="reveal">
-              Cuvintele lor spun<br><em>povestea.</em>
-            </h2>
-            <p class="section-intro reveal">
-              Cel mai important rezultat este felul în care oamenii își amintesc
-              experiența.
-            </p>
-            <p class="sample-notice">
-              Texte-model pentru prezentare · în așteptarea validării de către
-              clienți.
-            </p>
-          </div>
-          <div
-            class="testimonial-slider"
-            role="group"
-            aria-roledescription="carusel"
-            aria-label="Modele de testimoniale"
-          >
-            <div id="testimonials-track" class="testimonials-track"></div>
-            <div class="testimonial-controls">
-              <button
-                type="button"
-                class="round-button"
-                id="reviews-prev"
-                aria-label="Testimonialul anterior"
-              >
-                ←
-              </button>
-              <div
-                id="review-dots"
-                class="review-dots"
-                role="group"
-                aria-label="Alege testimonialul"
-              ></div>
-              <button
-                type="button"
-                class="round-button"
-                id="reviews-next"
-                aria-label="Testimonialul următor"
-              >
-                →</button
-              ><button
-                type="button"
-                class="review-autoplay"
-                id="review-autoplay"
-                aria-label="Oprește derularea automată a testimonialelor"
-              >
-                Ⅱ
-              </button>
-            </div>
-          </div>
-          <div class="short-reviews stagger">
-            <article class="reveal">
-              <span class="model-label">MODEL DE TESTIMONIAL · BOTEZ</span>
-              <p>
-                „Culorile, florile și toate detaliile s-au potrivit perfect. Un
-                eveniment delicat și elegant, exact așa cum ne-am dorit.”
-              </p>
-            </article>
-            <article class="reveal">
-              <span class="model-label">MODEL DE TESTIMONIAL · CORPORATE</span>
-              <p>
-                „Echilibrul dintre eleganță, profesionalism și o atmosferă
-                relaxată a reprezentat exact imaginea pe care ne-o doream.”
-              </p>
-            </article>
-            <article class="reveal">
-              <span class="model-label">MODEL DE TESTIMONIAL · EXPERIENȚĂ</span>
-              <p>
-                „Monica a avut răbdare să ne asculte și ne-a făcut să simțim că
-                fiecare detaliu contează.”
-              </p>
-            </article>
-          </div>
-        </div>
-
-        <div class="section-photos container">
-          <figure>
-            <img
-              src="assets/images/photo-client30-900.webp"
-              srcset="
-                assets/images/photo-client30-480.webp   480w,
-                assets/images/photo-client30-900.webp   900w,
-                assets/images/photo-client30-1440.webp 1440w
-              "
-              sizes="(max-width: 767px) 100vw, 50vw"
-              width="900"
-              height="675"
-              loading="lazy"
-              decoding="async"
-              alt="Un cuplu în fața inimii florale în nuanțe pastel">
-          </figure>
-          <figure>
-            <img
-              src="assets/images/photo-client31-900.webp"
-              srcset="
-                assets/images/photo-client31-480.webp   480w,
-                assets/images/photo-client31-900.webp   900w,
-                assets/images/photo-client31-1440.webp 1440w
-              "
-              sizes="(max-width: 767px) 100vw, 50vw"
-              width="900"
-              height="675"
-              loading="lazy"
-              decoding="async"
-              alt="Un cuplu zâmbind în fața unui decor în formă de inimă cu flori pastel">
           </figure>
         </div>
       </section>
