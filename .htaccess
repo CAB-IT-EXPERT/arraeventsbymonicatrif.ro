@@ -1,0 +1,55 @@
+# ARRA Events - static Apache site, installed at the domain root.
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Production domain only. Install a valid SSL certificate before launch.
+  RewriteCond %{HTTP_HOST} ^(?:www\.)?arraeventsbymonicatrif\.ro$ [NC]
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+  RewriteRule ^ https://arraeventsbymonicatrif.ro%{REQUEST_URI} [R=301,L,NE]
+  RewriteCond %{HTTP_HOST} ^www\.arraeventsbymonicatrif\.ro$ [NC]
+  RewriteRule ^ https://arraeventsbymonicatrif.ro%{REQUEST_URI} [R=301,L,NE]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType video/mp4 .mp4
+  AddType font/ttf .ttf
+  AddType image/svg+xml .svg
+  AddCharset UTF-8 .html .css .js .xml .txt
+</IfModule>
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/xml image/svg+xml
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 hour"
+  ExpiresByType application/javascript "access plus 1 hour"
+  ExpiresByType text/javascript "access plus 1 hour"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 month"
+</IfModule>
+<FilesMatch "^(\.|README|package|LICENSE)">
+  Require all denied
+</FilesMatch>
+
+# Existing hosting-managed PHP logging settings, preserved during deployment.
+<IfModule php8_module>
+  php_value error_log "/home/arraeven/logs/php.error.log"
+  php_flag log_errors On
+</IfModule>
+<IfModule lsapi_module>
+  php_value error_log "/home/arraeven/logs/php.error.log"
+  php_flag log_errors On
+</IfModule>

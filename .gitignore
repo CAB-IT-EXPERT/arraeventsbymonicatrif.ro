@@ -1,0 +1,22 @@
+# Local source archives and generated deliverables
+/instagram_arra_eventplanner/
+/media_website_selectie/
+/ARRA-website-Apache.zip
+/assets/previews/
+
+# Private deployment backups, logs, screenshots and temporary tests
+/qa/*
+!/qa/REDESIGN-2026-09-16.md
+/test-form.html
+
+# Secrets and local tooling
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

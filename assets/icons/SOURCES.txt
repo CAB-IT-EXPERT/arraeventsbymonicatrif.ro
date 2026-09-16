@@ -1,0 +1,6 @@
+WhatsApp monochrome brand glyph:
+https://github.com/simple-icons/simple-icons/blob/develop/icons/whatsapp.svg
+Simple Icons SVG source (CC0). WhatsApp is a trademark of its respective owner.
+The mark is not redrawn. CSS displays the monochrome glyph in white.
+
+Other small interface symbols are native SVG/CSS, authored for this website.
