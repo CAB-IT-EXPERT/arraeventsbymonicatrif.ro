@@ -5,22 +5,23 @@ function createTestimonialCarousel({ reviews, slider, track, counter, previous, 
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   })[character]);
   const wrap = index => ((index % reviews.length) + reviews.length) % reviews.length;
+  const sourceName = review => /instagram\.com/i.test(review.source) ? 'Instagram' : 'Facebook';
   let current = 0;
   let touchStart = null;
 
   track.innerHTML = reviews.map((review, index) => `
     <figure class="testimonial${index === 0 ? ' current' : ''}" aria-hidden="${index !== 0}" ${index !== 0 ? 'inert' : ''}>
       <figcaption class="review-person">
-        <img src="${escape(review.photo)}" width="48" height="48" loading="lazy" alt="${escape(review.author)} — fotografia de profil Facebook">
+        <img src="${escape(review.photo)}" width="48" height="48" loading="lazy" alt="${escape(review.author)} — fotografia de profil ${sourceName(review)}">
         <div><cite>${escape(review.author)}</cite><small>${escape(review.category)}</small></div>
       </figcaption>
       <div class="review-body" role="region" aria-label="Recomandarea de la ${escape(review.author)}">
         ${review.text.trim()
           ? `<blockquote cite="${escape(review.source)}">${escape(review.text)}</blockquote>`
-          : '<p class="review-endorsement"><span aria-hidden="true">♡</span>Recomandă ARRA pe Facebook</p>'}
+          : `<p class="review-endorsement"><span aria-hidden="true">♡</span>Recomandă ARRA pe ${sourceName(review)}</p>`}
       </div>
       <p class="review-scroll-hint" aria-hidden="true">Derulează pentru a citi întreaga recenzie ↓</p>
-      <a class="review-source" href="${escape(review.source)}" target="_blank" rel="noopener noreferrer">Vezi recomandarea pe Facebook <span aria-hidden="true">↗</span></a>
+      <a class="review-source" href="${escape(review.source)}" target="_blank" rel="noopener noreferrer">Vezi recomandarea pe ${sourceName(review)} <span aria-hidden="true">↗</span></a>
     </figure>`).join('');
   const slides = Array.from(track.querySelectorAll('.testimonial'));
 

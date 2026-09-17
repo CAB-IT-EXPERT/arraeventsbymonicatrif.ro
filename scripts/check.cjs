@@ -66,17 +66,22 @@ assert(message.includes('19 iunie 2027'));
 assert(buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('De stabilit'));
 assert(!buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('undefined'));
 assert(data.testimonials.length >= 3 && data.testimonials.every(review=>review.verified===true),'Keep the reviews confirmed by the user approved and visible');
-assert.equal(data.testimonials.length, 31, 'Include all 31 positive recommendations read on the client Facebook page');
-assert.equal(new Set(data.testimonials.map(review=>review.author)).size, 31, 'Do not duplicate authors');
-assert.equal(data.testimonials.filter(review=>review.text.trim()).length, 23, 'Eight endorsements have no readable quote; never invent one');
+assert.equal(data.testimonials.length, 28, 'Keep only the currently approved recommendations');
+assert.equal(new Set(data.testimonials.map(review=>review.author)).size, 28, 'Do not duplicate authors');
+assert.equal(data.testimonials.filter(review=>review.text.trim()).length, 20, 'Eight endorsements have no readable quote; never invent one');
 assert(!data.testimonials.some(review=>review.author === 'Andra Omran'), 'The requested selection is positive recommendations only');
+for (const removedAuthor of ['Andreea Chele','Andreea Petre','Alexandru Gabriel Soare','Mihaela Agripina']) {
+  assert(!data.testimonials.some(review=>review.author === removedAuthor), `${removedAuthor} must remain removed at the client's request`);
+}
+assert(data.testimonials.some(review=>review.author === 'Loredana Ștefan' && /instagram\.com\/marialoredanaaa/.test(review.source)), 'Include Loredana Ștefan from Instagram');
 assert(!homepage.includes('id="review-autoplay"') && !homepage.includes('id="review-dots"'), 'No testimonial play button or oversized pagination dots');
 assert(homepage.includes('id="review-count"'), 'Display compact review pagination');
 for (const review of data.testimonials) {
-  assert(/^https:\/\/www\.facebook\.com\/(?:[^/]+\/posts\/pfbid|permalink\.php\?story_fbid=pfbid)/.test(review.source), 'Every review must link to its original post');
+  assert(/^(?:https:\/\/www\.facebook\.com\/(?:[^/]+\/posts\/pfbid|permalink\.php\?story_fbid=pfbid)|https:\/\/www\.instagram\.com\/[A-Za-z0-9._]+\/?)/.test(review.source), 'Every review must link to its visible source');
   assert(fs.existsSync(path.join(root,review.photo)), 'Each sourced review needs its actual local author photo');
 }
 assert(homepage.includes('assets/images/hero-editorial.webp'), 'Use the generated long-table hero selected by the user');
+assert(homepage.includes('assets/images/monica-intro-card.png'), 'Include the Monica introduction graphic in the story section');
 for (const text of ['Cabana Lăptici','Cabana Poarta Padina','National Golf','criogenate','Prosecco Bar','ursitoare','mașini']) assert(homepage.toLowerCase().includes(text.toLowerCase()), `Missing requested service/location: ${text}`);
 assert(fs.statSync(path.join(root,'assets/documents/the-green-national-golf-country-club.pdf')).size < 10000000, 'The venue PDF must be web-sized');
 const testimonialSection = homepage.match(/<section\b[^>]*\bid="testimoniale"[^>]*>/)?.[0];

@@ -348,7 +348,7 @@ ARRA.reels = [
     duration: "7 SEC",
   },
 ];
-// Public recommendations read in the client's Facebook reviews tab on 2026-09-17.
+// Public recommendations confirmed by the client from Facebook and Instagram on 2026-09-17.
 // Preserve complete wording, author identity and original post; do not invent ratings.
 ARRA.testimonials = [
   {
@@ -402,14 +402,6 @@ ARRA.testimonials = [
   {
     "category": "Recomandă ARRA · Facebook",
     "verified": true,
-    "author": "Mihaela Agripina",
-    "photo": "assets/images/reviews/mihaela-agripina.jpg",
-    "source": "https://www.facebook.com/AgripinaMihaela09.09/posts/pfbid02dtVsEV7yUuTWZUYUoZX9pk4E3jgRQ9kSPE2yC8W2DJDkYiX9UhnFS9FwP9TsBjaql",
-    "text": "Recomand cu încredere Amazon decor by Apetrei Mihaela pentru ca sunt profesioniști! Încă de la începutul colaborării ai parte de susținere, îndrumare și înțelegere! Noi suntem la al doilea eveniment organizat cu acești oameni deosebiți și pot sa spun ca ne au oferit mai mult decât ne am dorit și la prețuri mult mai bune decât tot ce se găsește pe piata! Multumim pentru răbdare și implicarea de care ați dat dovada! 5*"
-  },
-  {
-    "category": "Recomandă ARRA · Facebook",
-    "verified": true,
     "author": "Cristian Marius Molea",
     "photo": "assets/images/reviews/cristian-marius-molea.jpg",
     "source": "https://www.facebook.com/Cr1s7o21/posts/pfbid02QtcyjUBiwfU9JL1wnmaLg5EHxEQ2yFzDJ9hY2nTvWYYR9KzQWemWbs8mDwPpidbBl",
@@ -458,14 +450,6 @@ ARRA.testimonials = [
   {
     "category": "Recomandă ARRA · Facebook",
     "verified": true,
-    "author": "Alexandru Gabriel Soare",
-    "photo": "assets/images/reviews/alexandru-gabriel-soare.jpg",
-    "source": "https://www.facebook.com/alexandrugabriel.soare.9/posts/pfbid02zzrRrbTKRv8JTHWK2PG77dv6pN6JRq6ZajdPtiawhpsveMeKTAMH1eRLnJCifQgEl",
-    "text": "Am apelat la Decor Factory pentru aranjamentele si elementele de decor pentru nunta noastra. Am gasit aici oameni dedicati, creativi si deschisi, care ne-au ajutat chiar si cu elemente personalizate. Totul a fost extraordinar! De-a lungul intregii colaborari au dat dovada de profesionalism si voie buna. Sala de nunta a aratat excelent datorita lor! Multumim Decor Factory!!!"
-  },
-  {
-    "category": "Recomandă ARRA · Facebook",
-    "verified": true,
     "author": "Elena Dinca",
     "photo": "assets/images/reviews/elena-dinca.jpg",
     "source": "https://www.facebook.com/elena.dinca.587/posts/pfbid0GyW9KupTMMfL4tRRpvsDRKnuJgNg6h6WSUJ3jDJaYYGKNur7v3PkEbA7njGJCPEyl",
@@ -506,14 +490,6 @@ ARRA.testimonials = [
   {
     "category": "Recomandă ARRA · Facebook",
     "verified": true,
-    "author": "Andreea Petre",
-    "photo": "assets/images/reviews/andreea-petre.jpg",
-    "source": "https://www.facebook.com/andreea.petre.161/posts/pfbid037h6Tj5Y7nQtL9XAPuQmmiLYmz6ajsQi3XLEH8uJwth3dTPdX6TvyNEYp1EnHhY4pl",
-    "text": "Mulțumim foaarte mult Andreea !! Decor de vis ! Toată lumea ne a felicitat ! Recomand cu caldura echipa Decor Factory ❤️❤️"
-  },
-  {
-    "category": "Recomandă ARRA · Facebook",
-    "verified": true,
     "author": "Bogdan Sarbu",
     "photo": "assets/images/reviews/bogdan-sarbu.jpg",
     "source": "https://www.facebook.com/bogdan.sarbu.906/posts/pfbid02w95hvZeD3TWxi9mNcqGaC8Po8oxmg8RW9HkpRUSyhgbqPeNLp2YC41mbRGj8vhX8l",
@@ -526,14 +502,6 @@ ARRA.testimonials = [
     "photo": "assets/images/reviews/chirculescu-anca.jpg",
     "source": "https://www.facebook.com/anca.stefanescu.1/posts/pfbid02CYrkGRHvFVM2r38axZzkAM4RAEzyk9dx7zJadhAbwTmna89jMXAfQqynhEc2iCR5l",
     "text": ""
-  },
-  {
-    "category": "Recomandă ARRA · Facebook",
-    "verified": true,
-    "author": "Andreea Chele",
-    "photo": "assets/images/reviews/andreea-chele.jpg",
-    "source": "https://www.facebook.com/chele.andreea/posts/pfbid02erKiRJeAsLwcoQbMykV47nRouyGZV79PjRjBeY9irbNZiNq3DiXtT6dvJn99fzPl",
-    "text": "Aranjamente facute cu gust, rabdare si pasiune. Recomand pentru calitatea aranjamentelor si prompitudinea in a raspunde solicitarilor. Multumim DecorFactory! ❤"
   },
   {
     "category": "Recomandă ARRA · Facebook",
@@ -598,5 +566,13 @@ ARRA.testimonials = [
     "photo": "assets/images/reviews/achim-catalin.jpg",
     "source": "https://www.facebook.com/achim.catalin.7/posts/pfbid0WJ49rMB4oEkUUhKEG5CLQvn1MY97bYQwGwxAey2rZ3g9CqegLSWwxti3CkCbmvuXl",
     "text": ""
+  },
+  {
+    "category": "Recomandă ARRA · Instagram",
+    "verified": true,
+    "author": "Loredana Ștefan",
+    "photo": "assets/images/reviews/loredana-stefan.jpg",
+    "source": "https://www.instagram.com/marialoredanaaa/",
+    "text": "Nu avem suficiente cuvinte să îi mulțumim Monicăi de la Arra Events pentru tot ce a făcut pentru noi! 🤍\nÎncă de la început a fost mai mult decât persoana care s-a ocupat de amenajarea locației — a fost omul care ne-a fost aproape la fiecare pas, ne-a ascultat, ne-a înțeles dorințele și ne-a oferit mereu cele mai bune sfaturi.\nA avut răbdare cu fiecare idee de-a noastră, ne-a susținut în tot ce ne-am dorit și, cel mai important, a reușit să transforme toate ideile noastre în realitate, exact așa cum ni le imaginam — și chiar mai frumos.\nPentru noi a contat enorm să avem alături un om implicat, atent la detalii și cu care să simțim că putem discuta orice. Monica ne-a oferit exact această siguranță și a pus suflet în fiecare detaliu."
   },
 ];
