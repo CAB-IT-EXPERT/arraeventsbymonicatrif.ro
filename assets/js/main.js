@@ -27,8 +27,19 @@ function buildWhatsAppMessage(details) {
 function buildWhatsAppURL(phone, message) {
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
+function selectInlinePreview({candidates, visibility, reel, reelVisibility = 0, hoveredReel}) {
+  // An explicit hover wins over an adjacent automatic film. Otherwise play
+  // the most visible candidate, not the panorama merely because it is visible.
+  if (reel && reel === hoveredReel && reelVisibility >= .45) return reel;
+  const ranked = candidates
+    .filter(video => !video.hasAttribute('data-reel'))
+    .map(video => ({video, ratio: visibility.get(video) || 0}));
+  if (reel && reelVisibility >= .45) ranked.push({video: reel, ratio: reelVisibility});
+  ranked.sort((a, b) => b.ratio - a.ratio || Number(b.video === reel) - Number(a.video === reel));
+  return ranked[0]?.video;
+}
 if (typeof module !== "undefined" && module.exports)
-  module.exports = { buildWhatsAppMessage, buildWhatsAppURL };
+  module.exports = { buildWhatsAppMessage, buildWhatsAppURL, selectInlinePreview };
 if (typeof document !== "undefined")
   (() => {
     const $ = (selector, root = document) => root.querySelector(selector);
@@ -253,21 +264,19 @@ if (typeof document !== "undefined")
       const reel = reelCarousel?.desktop ? reelCarousel.activeVideo : candidates
         .filter((v) => v.hasAttribute("data-reel"))
         .sort((a, b) => visibility.get(b) - visibility.get(a))[0];
-      let desktopReelVisible = false;
+      let reelVisibility = reel ? visibility.get(reel) || 0 : 0;
       if (reel && reelCarousel?.desktop) {
         // Card rotation can precede IntersectionObserver's next notification.
         // Check the selected frame directly so each new preview starts reliably.
         const frame = reel.getBoundingClientRect(), rail = reels.getBoundingClientRect();
         const width = Math.max(0, Math.min(frame.right, rail.right, innerWidth) - Math.max(frame.left, rail.left, 0));
         const height = Math.max(0, Math.min(frame.bottom, rail.bottom, innerHeight) - Math.max(frame.top, rail.top, 0));
-        desktopReelVisible = width * height >= frame.width * frame.height * .45;
+        reelVisibility = frame.width && frame.height ? width * height / (frame.width * frame.height) : 0;
       }
-      // The panoramic film has priority whenever it is in view; an adjacent
-      // carousel must not keep stealing playback from it.
-      const visiblePanorama = candidates.find(video => video.hasAttribute('data-panorama'));
-      const active = visiblePanorama || (desktopReelVisible ? reel : candidates
-        .filter(video => !video.hasAttribute('data-reel') || video === reel)
-        .sort((a, b) => visibility.get(b) - visibility.get(a))[0]);
+      const active = selectInlinePreview({
+        candidates, visibility, reel, reelVisibility,
+        hoveredReel: reelCarousel?.hoveredVideo
+      });
       videos.forEach(video => { if (video !== active) video.pause(); });
       if (active && ((!reduced.matches && !saveData) ||
         (active === reel && reelCarousel?.desktop && reelCarousel.allowPreview))) {

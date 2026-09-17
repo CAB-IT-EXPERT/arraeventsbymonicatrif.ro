@@ -38,7 +38,8 @@ Website-ul este pregătit pentru rădăcina domeniului, nu pentru publicare înt
 - Hero cu fotografie reală a cuplului și decorului ARRA (`photo-client31`), text în stânga pe desktop și deasupra imaginii pe telefon. Vechea imagine generată nu mai este afișată. Motto-ul are ornamente florale simetrice și text centrat inclusiv pe tabletă.
 - Fundaluri albe și pastelate, spațiere aerisită și una–două fotografii integrate în secțiunile principale. Serviciile folosesc imagini reprezentative diferite. Cele două filme au text scurt și layout alternat pe tabletă/desktop. Pe telefon textele editoriale și butoanele sunt centrate; câmpurile formularului rămân aliniate pentru lizibilitate.
 - Butonul din antet apelează `+40 753 037 078`; pe telefon afișează numai iconița, fără fundal plin. Butonul WhatsApp apare din dreapta numai după ieșirea din hero.
-- Reels desktop: opt carduri reale, fără clone, rotite circular în ambele direcții; săgeți, tastatură, tragere și avans automat la 5,5 secunde. La hover pornește numai videoclipul ales, fără titlu/play peste imagine. Derularea automată se suspendă la hover, focus, modal sau filă ascunsă; Spațiu pe șina focalizată comută pauza. Nu există buton suplimentar de play sub carusel.
+- Reels desktop: opt carduri reale, fără clone, rotite circular în ambele direcții; săgeți, tastatură, tragere și avans automat la 5,5 secunde. La hover pornește numai videoclipul ales, fără titlu/play peste imagine, cu prioritate față de filmul panoramic. Derularea automată se suspendă la hover, focus de tastatură, modal sau filă ascunsă; un click cu mouse-ul pe săgeată nu o blochează. La ieșirea cursorului, rotația reîncepe. Spațiu pe șina focalizată comută pauza. Nu există buton suplimentar de play sub carusel.
+- Redarea automată selectează videoclipul cel mai vizibil, cu prioritate pentru preview-ul curent al caruselului la egalitate; filmul panoramic nu mai oprește un carusel vizibil doar pentru că apare parțial în ecran. Rulează un singur videoclip inline simultan. Mișcarea redusă și economisirea datelor rămân respectate.
 - Reels mobil: derulare nativă tactilă, plus tragere cu mouse-ul în preview mobil. Schimbarea doar a înălțimii viewport-ului nu mai resetează poziția. Descrierile rămân pe mobil, sunt ascunse pe desktop.
 - Galerie mobilă pe două coloane și desktop pe trei coloane. Filtrarea rearanjează fotografiile pe întreaga lățime, fără coloane goale. Apăsarea fotografiei deschide lightbox-ul. Selecția actuală folosește 31 de fotografii confirmate de client ca ARRA; fotografia cu sigla altei firme și lista nominală de invitați sunt excluse.
 - Preview-urile ascund titlul și play-ul inclusiv pe mobil. Filmul panoramic are autoplay mut la scroll și control inline: pauza manuală persistă până la apăsarea Play; controlul dispare la reluare.
@@ -79,6 +80,7 @@ Adresa `contact@arraeventsbymonicatrif.ro` este afișată cu link `mailto:`. Că
 ```powershell
 node scripts/check.cjs
 node scripts/check-carousel.cjs
+node scripts/check-video-preview.cjs
 npx --yes --package html-validate html-validate index.html confidentialitate.html 404.html
 powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 ```

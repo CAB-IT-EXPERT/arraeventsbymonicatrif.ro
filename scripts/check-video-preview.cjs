@@ -1,0 +1,17 @@
+const assert = require('node:assert/strict');
+const {selectInlinePreview} = require('../assets/js/main.js');
+const video = kind => ({hasAttribute:name=>name===`data-${kind}`});
+const reel=video('reel'), otherReel=video('reel'), panorama=video('panorama'), film=video('film');
+const visibility=new Map([[reel,.6],[otherReel,1],[panorama,1],[film,.55]]);
+const options={candidates:[reel,otherReel,panorama,film],visibility,reel,reelVisibility:.6};
+assert.equal(selectInlinePreview({...options,hoveredReel:reel}),reel,'Hovered preview wins even when the panorama is fully visible');
+assert.equal(selectInlinePreview(options),panorama,'Without hover, the most visible film plays');
+assert.equal(selectInlinePreview({...options,reelVisibility:1}),reel,'Automatic carousel preview wins a fully visible tie');
+visibility.set(panorama,.5);
+assert.equal(selectInlinePreview(options),reel,'An adjacent partially visible panorama must not suppress automatic reel previews');
+assert.equal(selectInlinePreview({...options,hoveredReel:reel,reelVisibility:.2}),film,'An offscreen hovered card does not keep playback');
+assert.equal(selectInlinePreview({...options,candidates:[],reelVisibility:0}),undefined,'Pause all videos when none is visible');
+assert.equal(selectInlinePreview({...options,reel:undefined,candidates:[otherReel,film]}),film,'Do not play an unrelated reel');
+assert.equal(selectInlinePreview({...options,candidates:[reel],reelVisibility:.75}),reel,'Mobile selected preview is retained');
+assert.equal(selectInlinePreview({...options,candidates:[film],reelVisibility:0}),film,'A manually paused panorama stays excluded');
+console.log('PASS: hover priority over panorama; automatic preview visibility ranking; mobile, offscreen, excluded and empty candidates.');

@@ -22,7 +22,10 @@ window.createDesktopReelCarousel = ({track, previous, next, reduced, saveData, o
   function refresh() {
     clearTimeout(timer);
     syncButtons();
-    if (!desktop.matches || !visible || paused || hovered || moving || dragging || reduced.matches || saveData || document.hidden || isModalOpen() || region.contains(document.activeElement)) return;
+    // Pointer clicks leave a button focused too. Only keyboard focus should
+    // suspend rotation; otherwise a single arrow click stops autoplay forever.
+    const keyboardFocus = region.contains(document.activeElement) && document.activeElement.matches(':focus-visible');
+    if (!desktop.matches || !visible || paused || hovered || moving || dragging || reduced.matches || saveData || document.hidden || isModalOpen() || keyboardFocus) return;
     timer = setTimeout(() => move(1, false), previewDuration);
   }
   // Maintain a one-card buffer on the left. DOM shifts are compensated in the
@@ -199,6 +202,7 @@ window.createDesktopReelCarousel = ({track, previous, next, reduced, saveData, o
   return {
     get desktop() { return desktop.matches; },
     get activeVideo() { return activeVideo(); },
+    get hoveredVideo() { return desktop.matches ? hoveredVideo : null; },
     get allowPreview() { return manualPreview || (!reduced.matches && !saveData); },
     refresh
   };
