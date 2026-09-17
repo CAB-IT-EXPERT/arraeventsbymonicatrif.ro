@@ -4,15 +4,6 @@
 // Original catalogue and files remain untouched in data.js.
 ARRA.gallery = [
   {
-    id: "client15",
-    category: "Nunți",
-    title: "Promisiuni în pastel",
-    ratio: ".75",
-    alt: "Arcadă albă cu drapaje fluide, trandafiri roz pal, felinare și lumânări",
-    description:
-      "Arcadă albă cu drapaje fluide, trandafiri roz pal, felinare și lumânări.",
-  },
-  {
     id: "client29",
     category: "Cereri în căsătorie",
     title: "Clipă de neuitat",

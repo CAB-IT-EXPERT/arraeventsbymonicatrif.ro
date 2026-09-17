@@ -24,8 +24,11 @@ body.editorial-preview { padding-top: 144px; }
 .is-opening .intro-skip { opacity: 0; pointer-events: none; }
 .story { align-items: start; }
 .story-copy p { max-width: 62ch; }
-.monica-intro-card { grid-column: 1/-1; max-width: 760px; margin: 56px auto 0; border-radius: 24px; overflow: hidden; box-shadow: 0 28px 70px #7e5b1f1c; background: #fffaf2; }
-.monica-intro-card img { display: block; width: 100%; height: auto; }
+.story { scroll-margin-top: 128px; }
+.story-visual { max-width: min(100%, 520px); margin: 0 auto; padding: 0; }
+.story-detail { position: static; display: block; width: 100%; padding: 0; background: transparent; box-shadow: none; border-radius: 22px; transform: none; overflow: hidden; }
+.story-detail img { display: block; width: auto; max-width: 100%; height: auto; max-height: min(620px, calc(100svh - 180px)); margin-inline: auto; aspect-ratio: auto; object-fit: contain; border-radius: 22px; }
+.story-detail span { display: none; }
 .story-chapters { grid-column: 1/-1; padding-top: 40px; }
 .story-chapters h3, .service-catalogue h3 { font-size: clamp(32px,3.5vw,48px); }
 .story-pillars { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 48px 72px; }
@@ -108,7 +111,10 @@ body.editorial-preview { padding-top: 144px; }
   .site-header.scrolled .brand img { width: 52px; height: 52px; }
   .hero-image { height: auto; aspect-ratio: 4/3; border-radius: 18px; }
   .hero-image img { height: 100%; aspect-ratio: auto; object-position: 75% 50%; }
-  .monica-intro-card { margin-top: 38px; border-radius: 18px; box-shadow: 0 18px 44px #7e5b1f16; }
+  .story { scroll-margin-top: 108px; }
+  .story-visual { max-width: 100%; padding-left: 0; }
+  .story-detail { max-width: 520px; margin-inline: auto; border-radius: 18px; }
+  .story-detail img { width: 100%; max-height: none; border-radius: 18px; }
   .story-chapters { padding-top: 20px; }
   .story-pillars, .values-grid, .catalogue-grid, .venue-feature, .venue-options { grid-template-columns: 1fr; }
   .story-pillars { gap: 32px; }

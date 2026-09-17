@@ -34,8 +34,9 @@ assert.equal((homepage.match(/\bdata-panorama\b/g)||[]).length, 1, 'Do not dupli
 assert.equal(data.gallery.length,31);
 assert.equal(new Set(data.gallery.map(p=>p.id)).size,31);
 vm.runInContext(fs.readFileSync(path.join(root,'assets/js/preview-gallery.js'),'utf8'),context);
-assert.equal(data.gallery.length,31);
-assert.equal(new Set(data.gallery.map(p=>p.id)).size,31);
+assert.equal(data.gallery.length,30);
+assert.equal(new Set(data.gallery.map(p=>p.id)).size,30);
+assert(!data.gallery.some(photo => photo.id === 'client15'), 'The removed forest ceremony arch must stay out of the public gallery');
 assert.equal(data.reels.length,8);
 assert.equal(fs.readdirSync(path.join(root,'assets/video')).filter(f=>f.endsWith('.mp4')).length,11);
 assert(!/RO30ING|INGBROBU|company-section/.test(fs.readFileSync(path.join(root,'index.html'),'utf8')),'Removed company/bank block must remain absent');
@@ -81,7 +82,8 @@ for (const review of data.testimonials) {
   assert(fs.existsSync(path.join(root,review.photo)), 'Each sourced review needs its actual local author photo');
 }
 assert(homepage.includes('assets/images/hero-editorial.webp'), 'Use the generated long-table hero selected by the user');
-assert(homepage.includes('assets/images/monica-intro-card.png'), 'Include the Monica introduction graphic in the story section');
+assert(homepage.includes('assets/images/monica-story-card-900.webp'), 'Include the Monica introduction graphic as the second story image');
+assert(!homepage.includes('assets/images/photo-client15-'), 'The removed forest ceremony arch must not appear on the page');
 for (const text of ['Cabana Lăptici','Cabana Poarta Padina','National Golf','criogenate','Prosecco Bar','ursitoare','mașini']) assert(homepage.toLowerCase().includes(text.toLowerCase()), `Missing requested service/location: ${text}`);
 assert(fs.statSync(path.join(root,'assets/documents/the-green-national-golf-country-club.pdf')).size < 10000000, 'The venue PDF must be web-sized');
 const testimonialSection = homepage.match(/<section\b[^>]*\bid="testimoniale"[^>]*>/)?.[0];
@@ -93,4 +95,4 @@ assert(testimonialLinks.length === 2 && testimonialLinks.every(([link])=>!/\bhid
 assert(!/Texte-model|MODEL DE TESTIMONIAL|Modele de testimoniale|în așteptarea validării/i.test(homepage), 'Remove all public draft labels and pending-validation notices');
 assert(fs.readFileSync(path.join(root,'assets/js/main.js'),'utf8').includes('ARRA.testimonials.filter(item => item.verified === true)'), 'Never render unverified testimonials');
 assert(!fs.readFileSync(path.join(root,'assets/js/main.js'),'utf8').includes("replace('assets/video/', 'assets/previews/')"),'Inline playback must use full-quality masters');
-console.log(`PASS: ${required.size} local files; 31 client preview photos (31 originals retained); 11 full-quality videos; HTML anchors; unique IDs; JS syntax; WhatsApp encoding/fields/date/fallbacks; approved reviews without draft labels.`);
+console.log(`PASS: ${required.size} local files; 30 active client preview photos (31 originals retained); 11 full-quality videos; HTML anchors; unique IDs; JS syntax; WhatsApp encoding/fields/date/fallbacks; approved reviews without draft labels.`);
