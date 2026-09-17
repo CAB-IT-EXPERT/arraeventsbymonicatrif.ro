@@ -73,11 +73,11 @@ assert(!data.testimonials.some(review=>review.author === 'Andra Omran'), 'The re
 for (const removedAuthor of ['Andreea Chele','Andreea Petre','Alexandru Gabriel Soare','Mihaela Agripina']) {
   assert(!data.testimonials.some(review=>review.author === removedAuthor), `${removedAuthor} must remain removed at the client's request`);
 }
-assert(data.testimonials.some(review=>review.author === 'Loredana Ștefan' && /instagram\.com\/marialoredanaaa/.test(review.source)), 'Include Loredana Ștefan from Instagram');
+assert(data.testimonials.some(review=>review.author === 'Loredana Ștefan' && /facebook\.com\/maria\.loredana\.1496\/posts\/.+4307341192816609/.test(review.source)), 'Include Loredana Ștefan from Facebook');
 assert(!homepage.includes('id="review-autoplay"') && !homepage.includes('id="review-dots"'), 'No testimonial play button or oversized pagination dots');
 assert(homepage.includes('id="review-count"'), 'Display compact review pagination');
 for (const review of data.testimonials) {
-  assert(/^(?:https:\/\/www\.facebook\.com\/(?:[^/]+\/posts\/pfbid|permalink\.php\?story_fbid=pfbid)|https:\/\/www\.instagram\.com\/[A-Za-z0-9._]+\/?)/.test(review.source), 'Every review must link to its visible source');
+  assert(/^(?:https:\/\/www\.facebook\.com\/(?:[^/]+\/posts\/(?:pfbid|.+\/[0-9]+\/?)|permalink\.php\?story_fbid=pfbid)|https:\/\/www\.instagram\.com\/[A-Za-z0-9._]+\/?)/.test(review.source), 'Every review must link to its visible source');
   assert(fs.existsSync(path.join(root,review.photo)), 'Each sourced review needs its actual local author photo');
 }
 assert(homepage.includes('assets/images/hero-editorial.webp'), 'Use the generated long-table hero selected by the user');

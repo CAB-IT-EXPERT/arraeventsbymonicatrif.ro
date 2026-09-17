@@ -568,11 +568,11 @@ ARRA.testimonials = [
     "text": ""
   },
   {
-    "category": "Recomandă ARRA · Instagram",
+    "category": "Recomandă ARRA · Facebook",
     "verified": true,
     "author": "Loredana Ștefan",
     "photo": "assets/images/reviews/loredana-stefan.jpg",
-    "source": "https://www.instagram.com/marialoredanaaa/",
-    "text": "Nu avem suficiente cuvinte să îi mulțumim Monicăi de la Arra Events pentru tot ce a făcut pentru noi! 🤍\nÎncă de la început a fost mai mult decât persoana care s-a ocupat de amenajarea locației — a fost omul care ne-a fost aproape la fiecare pas, ne-a ascultat, ne-a înțeles dorințele și ne-a oferit mereu cele mai bune sfaturi.\nA avut răbdare cu fiecare idee de-a noastră, ne-a susținut în tot ce ne-am dorit și, cel mai important, a reușit să transforme toate ideile noastre în realitate, exact așa cum ni le imaginam — și chiar mai frumos.\nPentru noi a contat enorm să avem alături un om implicat, atent la detalii și cu care să simțim că putem discuta orice. Monica ne-a oferit exact această siguranță și a pus suflet în fiecare detaliu."
+    "source": "https://www.facebook.com/maria.loredana.1496/posts/nu-avem-suficiente-cuvinte-s%C4%83-%C3%AEi-mul%C8%9Bumim-monic%C4%83i-de-la-arra-events-pentru-tot-c/4307341192816609/",
+    "text": "Nu avem suficiente cuvinte să îi mulțumim Monicăi de la Arra Events pentru tot ce a făcut pentru noi!\nÎncă de la început a fost mai mult decât persoana care s-a ocupat de amenajarea locației — a fost omul care ne-a fost aproape la fiecare pas, ne-a ascultat, ne-a înțeles dorințele și ne-a oferit mereu cele mai bune sfaturi.\nA avut răbdare cu fiecare idee de-a noastră, ne-a susținut în tot ce ne-am dorit și, cel mai important, a reușit să transforme toate ideile noastre în realitate, exact așa cum ni le imaginam — și chiar mai frumos.\nPentru noi a contat enorm să avem alături un om implicat, atent la detalii și cu care să simțim că putem discuta orice. Monica ne-a oferit exact această siguranță și a pus suflet în fiecare detaliu.\nMonica, îți mulțumim pentru răbdare, implicare, sfaturi, susținere și pentru că ai contribuit atât de frumos la una dintre cele mai importante zile din viața noastră!\nRecomandăm Arra Events și, mai ales, pe Monica din tot sufletul! Dacă vă doriți un om care să vă asculte cu adevărat, să vă înțeleagă viziunea și să facă tot posibilul pentru a o transforma în realitate, sunteți pe mâini minunate."
   },
 ];
