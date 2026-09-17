@@ -97,6 +97,9 @@ if (typeof document !== "undefined")
       }),
     );
     $("#copyright-year").textContent = new Date().getFullYear();
+    $$('[data-location]').forEach(link => link.addEventListener('click', () => {
+      $('#contact-form [name="location"]').value = link.dataset.location;
+    }));
 
     // Portfolio: local, progressive and usable with a keyboard or touch.
     let filtered = ARRA.gallery.slice(),
@@ -455,7 +458,7 @@ if (typeof document !== "undefined")
       video.addEventListener('pause', () => video.closest('.reel').classList.remove('is-previewing'));
     });
 
-    // Only render approved reviews. The current three were confirmed by the user.
+    // Only render approved, sourced reviews, with the full original wording.
     // Keep future unapproved entries out of the public carousel.
     const reviewSection = $("#testimoniale"),
       reviews = ARRA.testimonials.filter(item => item.verified === true),
@@ -465,7 +468,7 @@ if (typeof document !== "undefined")
     let reviewIndex = 0,
       reviewTimer,
       reviewsVisible = false,
-      reviewsPaused = false,
+      reviewsPaused = true,
       reviewsHovered = false;
     if (reviews.length < 3) {
       reviewSection.hidden = true;
@@ -474,7 +477,7 @@ if (typeof document !== "undefined")
     reviewTrack.innerHTML = reviews
       .map(
         (item, index) =>
-          `<figure class="testimonial${index === 0 ? " current" : ""}" aria-hidden="${index !== 0}" ${index !== 0 ? "inert" : ""}><span class="quote-mark" aria-hidden="true">“</span><blockquote>${escape(item.text)}</blockquote><figcaption><cite>${escape(item.category)}${item.verified ? ` · ${escape(item.author)}` : ""}</cite></figcaption></figure>`,
+          `<figure class="testimonial${index === 0 ? " current" : ""}" aria-hidden="${index !== 0}" ${index !== 0 ? "inert" : ""}><figcaption class="review-person"><img src="${escape(item.photo)}" width="48" height="48" loading="lazy" alt="${escape(item.author)} — fotografia de profil Facebook"><div><cite>${escape(item.author)}</cite><small>${escape(item.category)}</small></div></figcaption><blockquote cite="${escape(item.source)}">${escape(item.text)}</blockquote><a class="review-source" href="${escape(item.source)}" target="_blank" rel="noopener noreferrer">Vezi recenzia pe Facebook <span aria-hidden="true">↗</span></a></figure>`,
       )
       .join("");
     reviewDots.innerHTML = reviews
@@ -495,7 +498,7 @@ if (typeof document !== "undefined")
         !document.hidden &&
         !$(".testimonial-slider").contains(document.activeElement)
       )
-        reviewTimer = setTimeout(() => setReview(reviewIndex + 1), 9000);
+        reviewTimer = setTimeout(() => setReview(reviewIndex + 1), Math.max(12000, reviews[reviewIndex].text.split(/\s+/).length * 400));
     }
     function setReview(index) {
       if (!reviews.length) return;

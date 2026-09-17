@@ -8,6 +8,7 @@
 /qa/*
 !/qa/REDESIGN-2026-09-16.md
 /test-form.html
+/tmp/
 
 # Secrets and local tooling
 .env

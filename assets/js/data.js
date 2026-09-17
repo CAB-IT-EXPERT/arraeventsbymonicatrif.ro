@@ -348,25 +348,31 @@ ARRA.reels = [
     duration: "7 SEC",
   },
 ];
-// Existing reviews confirmed authentic by the user on 2026-09-16.
-// Keep the supplied wording and anonymous attribution; approval is not third-party verification.
+// Public recommendations read in the client's Facebook reviews tab on 2026-09-17.
+// Preserve complete wording, author identity and original post; do not invent ratings.
 ARRA.testimonials = [
   {
-    category: "Nuntă",
+    category: "Recomandă ARRA · Facebook",
     verified: true,
-    author: "Client ARRA Events",
-    text: "De la prima discuție am simțit că suntem pe mâini bune. Monica a înțeles exact atmosfera pe care ne-o doream și a transformat fiecare idee într-un decor elegant, cald și perfect echilibrat. În ziua evenimentului am putut pur și simplu să ne bucurăm de moment, fără stres. Totul a fost impecabil.",
+    author: "Valentina Marinoff",
+    photo: "assets/images/reviews/valentina-marinoff.jpg",
+    source: "https://www.facebook.com/alexandra.vladunica/posts/pfbid0SHz1PgMz1jDRdNavyxT5MPoNeqtYjgyrKYHkqRbg93s7cQPXwySzeCJ7iPkXuPfbl",
+    text: "ARRA Events & Decor face parte din familia noastră și din magia care a transformat fiecare moment într-o amintire de neuitat.\nCu voi, nunta de poveste chiar există!\nNe-ați ghicit gândurile, ne-ați înțeles dorințele și ați făcut ca totul să prindă viață fără stres, cu atât de multă grijă și frumusețe.\nA fost mai mult decât ne-am imaginat și mai frumos decât am fi putut visa.\nVă mulțumim pentru tot!\nIar dacă ar fi să vă recomandăm cuiva drag nouă, am face-o fără nicio ezitare. Pentru că dincolo de decoruri și de lucrurile frumoase pe care le creați, puneți suflet, înțelegeți oamenii și reușiți să transformați o zi importantă într-o poveste care rămâne cu noi pentru totdeauna.\nDin partea noastră, ARRA Events & Decor este o recomandare din inimă. 🤍",
   },
   {
-    category: "Organizare completă",
+    category: "Recomandă ARRA · Facebook",
     verified: true,
-    author: "Client ARRA Events",
-    text: "Profesionalism, creativitate și foarte multă atenție la detalii. Fiecare element a fost gândit cu grijă, iar rezultatul final a depășit ceea ce ne imaginaserăm. Cel mai mult am apreciat faptul că Monica a fost mereu prezentă, calmă și atentă la orice detaliu.",
+    author: "Andreea Tanasa",
+    photo: "assets/images/reviews/andreea-tanasa.jpg",
+    source: "https://www.facebook.com/andreeatanasaa/posts/pfbid02uxiWHhBHtFS4i5Xy4teuWWkjiXtQob4V2RkpYaRHmc9CmS5WBAusu6amm75VbUL6l",
+    text: "Totul la superlativ! Foarte profi",
   },
   {
-    category: "Cerere în căsătorie",
+    category: "Recomandă ARRA · Facebook",
     verified: true,
-    author: "Client ARRA Events",
-    text: "Mi-am dorit un moment special, dar nu știam exact cum să îl transform în realitate. Echipa ARRA a construit o atmosferă absolut superbă, elegantă și foarte personală. Totul a fost pregătit până la cel mai mic detaliu și reacția ei a spus totul.",
+    author: "Oana M. Drăgan",
+    photo: "assets/images/reviews/oana-dragan.jpg",
+    source: "https://www.facebook.com/oanamdinu/posts/pfbid02SyWww4KLVLgDhcNRaTKivkEEZz11Dh8mmbdhDnhtkc1GVQXyot6otJnMqhLQ4Lrql",
+    text: "Recomand!!\nmulțumim mult pentru cel mai frumos decor cristelnita cât și pentru buchete și lumânări ❣️",
   },
 ];

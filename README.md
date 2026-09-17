@@ -35,7 +35,12 @@ Website-ul este pregătit pentru rădăcina domeniului, nu pentru publicare înt
 
 ## Ajustări de design și interacțiune
 
-- Hero cu fotografie reală a cuplului și decorului ARRA (`photo-client31`), text în stânga pe desktop și deasupra imaginii pe telefon. Vechea imagine generată nu mai este afișată. Motto-ul are ornamente florale simetrice și text centrat inclusiv pe tabletă.
+- Hero cu imaginea generată a mesei lungi (`hero-editorial.webp`), selectată explicit de utilizator la 17 septembrie 2026. Text în stânga pe desktop și deasupra imaginii pe telefon. Motto-ul are ornamente florale simetrice și text centrat inclusiv pe tabletă.
+- Logo inițial 116 px pe desktop / 84 px pe telefon, redus la 64 / 52 px la scroll, cu spațiu în antet și intensificarea auriului prin CSS. Deschidere în două panouri, o singură dată per sesiune, maximum 1,9 secunde; se poate sări prin atingere, scroll, Escape, Tab sau buton. Este dezactivată pentru mișcare redusă și linkuri către secțiuni.
+- Povestea completă despre Monica și ARRA, furnizată la 17 septembrie, este împărțită între „Povestea” și valorile brandului. Instrucțiunile de strategie web din brief nu sunt publicate ca text de prezentare.
+- Catalogul serviciilor include organizare, flori naturale/criogenate/artificiale, buchete și lumânări, invitații, DJ/entertainment/ursitoare/artificii, foto-video/cabină foto/360, baruri tematice și închirieri.
+- Secțiunea Locații include National Golf and Country Club, Cabana Lăptici, Cabana Poarta Padina și posibilitatea unei locații alese de client. Fotografiile celor două cabane așteaptă identificarea/furnizarea de către client; nu sunt înlocuite cu imagini de la alte locații.
+- Prezentarea The Green Events păstrează toate cele 13 pagini și textul original, comprimată de la 207,5 MB la 5,24 MB; coperta și PDF-ul sunt locale, încărcate la cerere, fără iframe extern.
 - Fundaluri albe și pastelate, spațiere aerisită și una–două fotografii integrate în secțiunile principale. Serviciile folosesc imagini reprezentative diferite. Cele două filme au text scurt și layout alternat pe tabletă/desktop. Pe telefon textele editoriale și butoanele sunt centrate; câmpurile formularului rămân aliniate pentru lizibilitate.
 - Butonul din antet apelează `+40 753 037 078`; pe telefon afișează numai iconița, fără fundal plin. Butonul WhatsApp apare din dreapta numai după ieșirea din hero.
 - Reels desktop: opt carduri reale, fără clone, rotite circular în ambele direcții; săgeți, tastatură, tragere și avans automat la 5,5 secunde. La hover pornește numai videoclipul ales, fără titlu/play peste imagine, cu prioritate față de filmul panoramic. Derularea automată se suspendă la hover, focus de tastatură, modal sau filă ascunsă; un click cu mouse-ul pe săgeată nu o blochează. La ieșirea cursorului, rotația reîncepe. Spațiu pe șina focalizată comută pauza. Nu există buton suplimentar de play sub carusel.
@@ -59,8 +64,8 @@ Adresa `contact@arraeventsbymonicatrif.ro` este afișată cu link `mailto:`. Că
 
 ## De confirmat înainte de lansarea publică
 
-- Utilizatorul a confirmat explicit la 16 septembrie 2026 că recenziile existente sunt autentice. Secțiunea și navigarea rămân vizibile; toate etichetele de model și notificările de validare au fost eliminate. Textele și atribuirea anonimă „Client ARRA Events” sunt păstrate, fără nume, note sau surse inventate.
-- Câmpul intern `verified: true` din `assets/js/data.js` reflectă această confirmare, nu o verificare independentă. Recenziile adăugate ulterior trebuie aprobate înainte de publicare; caruselul filtrează intrările neaprobate.
+- Cele trei recenzii anonime au fost înlocuite la 17 septembrie 2026 cu recomandările publice citite în fila Facebook indicată de utilizator: Valentina Marinoff, Andreea Tanasa și Oana M. Drăgan. Sunt păstrate textele integrale, fotografiile de profil observate și linkurile directe la postări, fără note/steluțe inventate. Nu sunt folosite embed-uri Facebook sau URL-uri CDN expirabile.
+- Câmpul intern `verified: true` semnalează verificarea postării-sursă și autorizarea utilizatorului de a o include, nu o verificare a identității sau un badge acordat de platformă. Titularul site-ului rămâne responsabil pentru drepturile de republicare a textelor și fotografiilor. Recenziile adăugate ulterior trebuie aprobate înainte de publicare; caruselul filtrează intrările neaprobate. Caruselul pornește în pauză pentru lectura textului complet; autoplay-ul opțional ține cont de lungimea recenziei.
 - Titlurile portofoliului sunt editoriale, bazate pe fotografii. Nu pretind numele clienților, data, locația exactă sau rezultate neverificate. Filtrele fără fotografii, inclusiv Corporate, nu sunt afișate.
 - Clienta trebuie să confirme drepturile de utilizare pe website pentru fotografii, persoanele filmate și muzica din videoclipuri. Disponibilitatea pe Instagram nu confirmă automat licența muzicii pentru un website independent.
 - Confirmă că pagina Facebook furnizată (`amazingdecorbyapetreimihaela`) este destinația dorită; linkul este inclus exact conform solicitării, fără a presupune o identitate juridică între pagini.
@@ -70,6 +75,7 @@ Adresa `contact@arraeventsbymonicatrif.ro` este afișată cu link `mailto:`. Că
 
 - Texte și structură: `index.html`.
 - Culori, spațiere, responsive: `assets/css/editorial-preview.css`, peste baza `assets/css/style.css`.
+- Ajustările aprobate în 17 septembrie: `assets/css/client-refinements.css`; intro accesibil: `assets/js/brand-intro.js`.
 - Portofoliul actual: `assets/js/preview-gallery.js`; selecția originală, reels, testimoniale și telefonul formularului: `assets/js/data.js`.
 - Interacțiuni și formular: `assets/js/main.js`.
 - Animații: `assets/js/animations.js`.
@@ -81,6 +87,7 @@ Adresa `contact@arraeventsbymonicatrif.ro` este afișată cu link `mailto:`. Că
 node scripts/check.cjs
 node scripts/check-carousel.cjs
 node scripts/check-video-preview.cjs
+node scripts/check-brand-intro.cjs
 npx --yes --package html-validate html-validate index.html confidentialitate.html 404.html
 powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 ```

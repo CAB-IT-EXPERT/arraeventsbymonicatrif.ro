@@ -51,18 +51,19 @@
       crossorigin>
     <link
       rel="preload"
-      href="assets/images/photo-client31-1440.webp"
-      imagesrcset="assets/images/photo-client31-900.webp 900w, assets/images/photo-client31-1440.webp 1440w"
+      href="assets/images/hero-editorial.webp"
       imagesizes="(max-width: 767px) 100vw, 46vw"
       as="image"
       fetchpriority="high">
     <link rel="stylesheet" href="assets/css/style.css?v=20260916-pastel">
     <link rel="stylesheet" href="assets/css/whatsapp.css?v=20260916-pastel">
     <link rel="stylesheet" href="assets/css/editorial-preview.css?v=20260916-pastel">
-    <script src="assets/js/data.js?v=20260916-approved-reviews" defer></script>
+    <link rel="stylesheet" href="assets/css/client-refinements.css?v=20260917-client">
+    <script src="assets/js/brand-intro.js?v=20260917-client" defer></script>
+    <script src="assets/js/data.js?v=20260917-client" defer></script>
     <script src="assets/js/preview-gallery.js?v=20260916-pastel" defer></script>
     <script src="assets/js/reel-carousel.js?v=20260917-reel-playback" defer></script>
-    <script src="assets/js/main.js?v=20260917-reel-playback" defer></script>
+    <script src="assets/js/main.js?v=20260917-client" defer></script>
     <script src="assets/js/animations.js?v=20260916-approved-reviews" defer></script>
     <script type="application/ld+json">
       {
@@ -80,6 +81,11 @@
     </script>
   </head>
   <body class="editorial-preview">
+    <div id="brand-intro" class="brand-intro" hidden>
+      <div class="brand-curtain curtain-left" aria-hidden="true"><img src="assets/images/arra-social-logo.png" width="1254" height="1254" alt=""></div>
+      <div class="brand-curtain curtain-right" aria-hidden="true"><img src="assets/images/arra-social-logo.png" width="1254" height="1254" alt=""></div>
+      <button type="button" class="intro-skip">Intră pe site <span aria-hidden="true">↗</span></button>
+    </div>
     <a class="skip-link" href="#continut">Mergi la conținut</a>
     <div class="scroll-progress" aria-hidden="true"></div>
     <header class="site-header" id="header">
@@ -97,7 +103,7 @@
           <a class="active" href="#acasa">Acasă</a
           ><a href="#testimoniale">Testimoniale</a
           ><a href="#povestea">Povestea</a><a href="#servicii">Servicii</a
-          ><a href="#portofoliu">Portofoliu</a
+          ><a href="#locatii">Locații</a><a href="#portofoliu">Portofoliu</a
           ><a href="#contact">Contact</a>
         </nav>
         <a
@@ -155,7 +161,7 @@
       <nav aria-label="Navigare mobil">
         <a href="#acasa">Acasă</a><a href="#testimoniale">Testimoniale</a
         ><a href="#povestea">Povestea</a
-        ><a href="#servicii">Servicii</a><a href="#portofoliu">Portofoliu</a
+        ><a href="#servicii">Servicii</a><a href="#locatii">Locații</a><a href="#portofoliu">Portofoliu</a
         ><a href="#contact">Contact</a>
       </nav>
       <a class="button gold" href="tel:+40753037078"
@@ -183,16 +189,12 @@
       <section class="hero wide" id="acasa" aria-labelledby="hero-title">
         <div class="hero-image">
           <img
-            src="assets/images/photo-client31-1440.webp"
-            srcset="
-              assets/images/photo-client31-900.webp   900w,
-              assets/images/photo-client31-1440.webp 1440w
-            "
+            src="assets/images/hero-editorial.webp"
             sizes="(max-width: 767px) 100vw, 46vw"
-            width="1440"
-            height="959"
+            width="1672"
+            height="941"
             fetchpriority="high"
-            alt="Un cuplu zâmbind în fața unui decor în formă de inimă cu flori pastel">
+            alt="Masă lungă cu aranjamente florale, lumânări și candelabru, pe o terasă deasupra lacului — imagine de atmosferă">
         </div>
         <div class="hero-shade"></div>
         <div class="hero-content">
@@ -431,35 +433,14 @@
                 type="button"
                 class="review-autoplay"
                 id="review-autoplay"
-                aria-label="Oprește derularea automată a testimonialelor"
+                aria-label="Pornește derularea automată a testimonialelor"
+                aria-pressed="true"
               >
-                Ⅱ
+                ▷
               </button>
             </div>
           </div>
-          <div class="short-reviews stagger">
-            <article class="reveal">
-              <span class="model-label">BOTEZ</span>
-              <p>
-                „Culorile, florile și toate detaliile s-au potrivit perfect. Un
-                eveniment delicat și elegant, exact așa cum ne-am dorit.”
-              </p>
-            </article>
-            <article class="reveal">
-              <span class="model-label">CORPORATE</span>
-              <p>
-                „Echilibrul dintre eleganță, profesionalism și o atmosferă
-                relaxată a reprezentat exact imaginea pe care ne-o doream.”
-              </p>
-            </article>
-            <article class="reveal">
-              <span class="model-label">EXPERIENȚĂ</span>
-              <p>
-                „Monica a avut răbdare să ne asculte și ne-a făcut să simțim că
-                fiecare detaliu contează.”
-              </p>
-            </article>
-          </div>
+          <p class="reviews-source"><a href="https://www.facebook.com/amazingdecorbyapetreimihaela/reviews/" target="_blank" rel="noopener noreferrer">Mai multe recomandări pe Facebook <span aria-hidden="true">↗</span></a></p>
         </div>
 
         <div class="section-photos container">
@@ -537,15 +518,13 @@
         <div class="story-copy">
           <p class="eyebrow reveal">POVESTEA NOASTRĂ</p>
           <h2 id="story-title" class="reveal">
-            O poveste frumoasă începe <em>cu voi.</em>
+            Dincolo de organizare,<br><em>o artă a conexiunii.</em>
           </h2>
           <p class="reveal">
-            Sunt Monica. Cred în evenimente care vă seamănă și în liniștea de a
-            ști că fiecare detaliu este pe mâini bune.
+            Dacă ARRA este arhitectura, atunci Monica Trif este suflul de viață care transformă o structură în experiență.
           </p>
           <p class="reveal">
-            Vă ascult povestea și îi dau formă prin flori, culori și alegeri
-            făcute împreună. Cu un plan clar și multă grijă pentru voi.
+            În lumea evenimentelor, multe lucruri pot fi cumpărate: locații, decorațiuni, servicii. Dar ceea ce Monica Trif aduce în fiecare proiect sub umbrela ARRA este „Factorul Uman”. Povestea brandului meu nu este despre liste de sarcini bifate, ci despre capacitatea ta de a asculta, de a intui dorințele nespuse și de a le da formă înainte ca ele să devină cerințe.
           </p>
           <div class="founder reveal">
             <span class="signature">Monica Trif</span
@@ -555,51 +534,68 @@
             >Omul din spatele poveștii <span>↗</span></a
           >
         </div>
+        <div class="story-chapters">
+          <div class="section-heading centered">
+            <p class="eyebrow">SEMNIFICAȚIA ARRA</p>
+            <h3>Sub bagheta <em>Monicăi Trif.</em></h3>
+          </div>
+          <div class="story-pillars">
+            <article><span aria-hidden="true">A</span><h4>Autenticitatea Monicăi</h4><p>Fiecare eveniment poartă amprenta personală a Monicăi. Ea nu creează pentru clienți, ci împreună cu ei, devenind confidenta și ghidul lor în procesul de creație.</p></article>
+            <article><span aria-hidden="true">R</span><h4>Rigoarea Viziunii</h4><p>Monica este cea care vede tabloul întreg. Ea aduce rigoarea necesară pentru ca viziunea creativă să se transforme în realitate, fără a sacrifica nicio picătură din magia inițială.</p></article>
+            <article><span aria-hidden="true">R</span><h4>Relația de Încredere</h4><p>Într-o industrie a presiunii, Monica Trif a construit ARRA ca pe un spațiu sigur. Clientul știe că, având-o pe ea alături, stresul dispare, lăsând loc doar entuziasmului.</p></article>
+            <article><span aria-hidden="true">A</span><h4>Amprenta Emoțională</h4><p>La finalul zilei, când invitații pleacă, ei nu pleacă cu „un eveniment”, ci cu o emoție. Amprenta Monicăi este acel detaliu cald, acea atingere finală care face ca ARRA Events să nu fie doar o companie, ci o experiență ce poartă numele tău.</p></article>
+          </div>
+          <div class="story-manifesto">
+            <p class="eyebrow">FILOSOFIA BRANDULUI</p>
+            <h3>Semnătura mea, <em>amintirea ta.</em></h3>
+            <p>„ARRA Events by Monica Trif” spune povestea unui brand care a renunțat la anonimatul corporatist pentru a îmbrățișa identitatea omului din spatele succesului. Monica nu este doar un organizator; ea este un arhitect de emoții care garantează, prin numele ei, că fiecare moment este tratat cu aceeași grijă cu care ai trata un eveniment din propria ta viață.</p>
+            <p class="signature">Povestea ta, orchestrată de ARRA.</p>
+            <p class="story-signoff">Arhitectură de evenimente, viziunea Monicăi Trif.</p>
+          </div>
+        </div>
       </section>
 
       <section class="values-section section" aria-labelledby="values-title">
         <div class="container">
           <div class="section-heading centered">
             <p class="eyebrow reveal">PATRU LITERE. O PROMISIUNE.</p>
-            <h2 class="reveal" id="values-title">Ce înseamnă <em>ARRA.</em></h2>
+            <h2 class="reveal" id="values-title">Arhitecții <em>momentului.</em></h2>
+            <div class="story-origin">
+              <p>Se spune că, în agitația lumii moderne, timpul nu se măsoară în secunde, ci în stări. Într-un univers unde evenimentele sunt adesea doar o succesiune de logistici reci, a apărut ARRA – nu doar ca un organizator, ci ca un „curator de amintiri”.</p>
+              <p>Numele nu a fost ales la întâmplare. Pentru cei care fac parte din echipa ARRA, fiecare literă este un pilon pe care se sprijină arhitectura unui eveniment perfect:</p>
+            </div>
           </div>
           <div class="values-grid stagger">
             <article class="value reveal">
               <span class="value-letter">A</span>
               <h3>Autenticitate</h3>
               <p>
-                Fiecare eveniment pornește de la povestea reală a oamenilor
-                pentru care îl construim. Ascultăm, descoperim și creăm împreună
-                cu tine.
+                Totul începe cu un adevăr. ARRA nu copiază tendințe; caută esența din spatele fiecărui client și o transpune în realitate. Evenimentele lor nu sunt „de serie”, ci sunt oglinzi ale celor care le trăiesc.
               </p>
             </article>
             <article class="value reveal">
               <span class="value-letter">R</span>
               <h3>Rafinament</h3>
               <p>
-                Eleganța înseamnă echilibru, proporție și atenție la detaliile
-                care creează atmosfera. Acele alegeri care se simt firesc, fără
-                exces.
+                Aceasta este semnătura vizuală și tactilă. Este grija pentru detaliul care nu se vede imediat, dar care se simte în atmosferă: lumina perfectă, textura unei invitații, cursivitatea unei serii de evenimente. Rafinamentul la ARRA înseamnă eleganță fără efort.
               </p>
             </article>
             <article class="value reveal">
               <span class="value-letter">R</span>
               <h3>Reziliență</h3>
               <p>
-                În spatele unui eveniment fluid există decizii, adaptări și
-                soluții gestionate cu calm. Pentru ca tu să te poți bucura de
-                moment.
+                În spatele oricărui eveniment memorabil stă o organizare de fier. Aceasta este „motorul” invizibil. Indiferent de provocările neprevăzute, echipa ARRA rămâne calmă, stăpână pe situație, asigurându-se că singurul lucru pe care îl simt invitații este fluența și bucuria momentului.
               </p>
             </article>
             <article class="value reveal">
               <span class="value-letter">A</span>
               <h3>Amintire</h3>
               <p>
-                Decorurile se strâng, luminile se sting, dar felul în care un
-                moment te-a făcut să te simți poate rămâne o viață.
+                Acesta este scopul final. Un eveniment se termină când se sting luminile, dar o „experiență ARRA” continuă să trăiască. Este acel moment în care, după ani de zile, oamenii spun: „Îți mai amintești cât de frumos a fost atunci?”
               </p>
             </article>
           </div>
+          <p class="values-signature signature">ARRA: Arhitectură pentru amintiri memorabile.</p>
         </div>
 
         <div class="section-photos container">
@@ -753,10 +749,72 @@
             </div>
           </article>
         </div>
-        <p class="services-note reveal">
-          Flori, arcade, decoruri de masă, candy bar și accente de sezon — alese
-          și armonizate pentru povestea ta.
-        </p>
+        <div class="service-catalogue" aria-labelledby="catalogue-title">
+          <div class="section-heading centered">
+            <p class="eyebrow">TOTUL, ÎN ACELAȘI LOC</p>
+            <h3 id="catalogue-title">De la prima idee la <em>ultimul detaliu.</em></h3>
+            <p>Alegem împreună serviciile potrivite evenimentului tău.</p>
+          </div>
+          <div class="catalogue-grid">
+            <article><span class="eyebrow">01 / PLANIFICARE</span><h4>Consultanță &amp; organizare</h4><p>Consultanță, concept, planificare și coordonare pentru orice tip de eveniment: nunți, botezuri, aniversări, celebrări private și evenimente corporate.</p></article>
+            <article><span class="eyebrow">02 / FLORI &amp; DETALII</span><h4>Design floral &amp; invitații</h4><p>Aranjamente florale, buchete și lumânări pentru nunți și botezuri, din flori naturale, criogenate sau artificiale. Invitații alese în armonie cu evenimentul.</p></article>
+            <article><span class="eyebrow">03 / ATMOSFERĂ</span><h4>Muzică &amp; entertainment</h4><p>DJ, entertainment, ursitoare și artificii pentru momentele de sărbătoare. Stabilim împreună programul și serviciile potrivite locației.</p></article>
+            <article><span class="eyebrow">04 / AMINTIRI</span><h4>Foto, video &amp; experiențe</h4><p>Servicii foto-video, cabină foto și cameră 360, pentru emoții surprinse firesc și experiențe de care invitații să se bucure.</p></article>
+            <article><span class="eyebrow">05 / GUST &amp; CELEBRARE</span><h4>Baruri pentru evenimente</h4><p>Candy bar, cheese bar, fruit bar, Aperitivo Bar și Prosecco Bar. Detalii delicioase, integrate în atmosfera evenimentului.</p></article>
+            <article><span class="eyebrow">06 / LOGISTICĂ</span><h4>Închirieri &amp; amenajare</h4><p>Mașini de epocă, corturi, mese, scaune, veselă și tacâmuri. Punem laolaltă elementele de care ai nevoie pentru un eveniment complet.</p></article>
+          </div>
+        </div>
+      </section>
+      <section class="venues section" id="locatii" aria-labelledby="venues-title">
+        <div class="container">
+          <div class="section-heading centered">
+            <p class="eyebrow">LOCURI PENTRU POVESTEA TA</p>
+            <h2 id="venues-title">Trei colaborări.<br><em>Nenumărate posibilități.</em></h2>
+            <p class="section-intro">Descoperă locațiile partenere sau spune-ne unde visezi să fie evenimentul tău.</p>
+          </div>
+          <article class="venue-feature" aria-labelledby="golf-title">
+            <header class="venue-heading">
+              <p class="eyebrow">THE GREEN EVENTS</p>
+              <h3 id="golf-title">National Golf<br><em>and Country Club</em></h3>
+            </header>
+            <div class="venue-film">
+              <div class="landscape-media is-paused" id="panoramic-film">
+                <video
+                  data-panorama
+                  data-src="assets/video/2026-01-14_DTfQlqzgg9I.mp4"
+                  data-media-version="20260916-panorama"
+                  poster="assets/posters/DTfQlqzgg9I.webp?v=20260916-panorama"
+                  width="1280"
+                  height="576"
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  title="Prezentare panoramică — National Golf and Country Club"
+                ></video>
+                <button type="button" class="landscape-play" aria-label="Redă filmul panoramic: National Golf and Country Club" aria-pressed="false">
+                  <svg class="panorama-play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m8 5 11 7-11 7Z" /></svg>
+                  <svg class="panorama-pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg>
+                </button>
+              </div>
+              <button type="button" class="text-link text-button" data-open-video="2026-01-14_DTfQlqzgg9I.mp4">Vezi filmul pe tot ecranul <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="venue-copy">
+              <p>Celebrări private, evenimente corporate și seri de socializare într-un cadru deschis către natură. Descoperă spațiile și atmosfera în prezentarea locației.</p>
+              <a class="venue-preview" href="assets/documents/the-green-national-golf-country-club.pdf" target="_blank" rel="noopener" aria-label="Deschide prezentarea The Green Events, PDF, într-o filă nouă">
+                <img src="assets/images/the-green-preview.jpg" width="1100" height="619" alt="Coperta prezentării The Green Events, National Golf and Country Club" loading="lazy">
+                <span>Explorează prezentarea <span aria-hidden="true">↗</span></span>
+              </a>
+              <div class="venue-actions"><a class="button gold" href="assets/documents/the-green-national-golf-country-club.pdf" target="_blank" rel="noopener">Vezi prezentarea <span aria-hidden="true">↗</span></a><a class="text-link" href="assets/documents/the-green-national-golf-country-club.pdf" download>Descarcă PDF <span aria-hidden="true">↓</span></a></div>
+              <p class="venue-file-note">13 pagini · PDF, 5 MB</p>
+            </div>
+          </article>
+          <div class="venue-options">
+            <article><span class="eyebrow">LOCAȚIE PARTENERĂ</span><h3>Cabana <em>Lăptici</em></h3><p>Unul dintre locurile cu care colaborăm pentru evenimentul tău. Povestim despre planurile tale și verificăm împreună disponibilitatea.</p><a class="text-link" href="#contact" data-location="Cabana Lăptici">Hai să vorbim despre Lăptici <span aria-hidden="true">↗</span></a></article>
+            <article><span class="eyebrow">LOCAȚIE PARTENERĂ</span><h3>Cabana <em>Poarta Padina</em></h3><p>O altă posibilitate din selecția noastră de locații partenere. Alegem împreună cadrul potrivit pentru oamenii și momentele tale.</p><a class="text-link" href="#contact" data-location="Cabana Poarta Padina">Hai să vorbim despre Poarta Padina <span aria-hidden="true">↗</span></a></article>
+          </div>
+          <div class="venue-choice"><p class="signature">Sau locul pe care îl ai deja în suflet.</p><p>Ai ales deja o locație? Organizăm evenimentul și în spațiul ales de tine.</p><a class="text-link" href="#contact">Spune-ne unde începe povestea <span aria-hidden="true">↗</span></a></div>
+        </div>
       </section>
       <section
         class="feature-films section"
@@ -1218,66 +1276,6 @@
               </button>
             </div>
           </div>
-          <article class="landscape-film reveal">
-            <div class="landscape-media is-paused" id="panoramic-film">
-              <video
-                data-panorama
-                data-src="assets/video/2026-01-14_DTfQlqzgg9I.mp4"
-                data-media-version="20260916-panorama"
-                poster="assets/posters/DTfQlqzgg9I.webp?v=20260916-panorama"
-                width="1280"
-                height="576"
-                muted
-                loop
-                playsinline
-                preload="none"
-                title="Locul în care începe povestea"
-              ></video
-              ><button
-                type="button"
-                class="landscape-play"
-                aria-label="Redă filmul panoramic: Locul în care începe povestea"
-                aria-pressed="false"
-              >
-                <svg
-                  class="panorama-play-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  aria-hidden="true"
-                >
-                  <path d="m8 5 11 7-11 7Z" />
-                </svg>
-                <svg
-                  class="panorama-pause-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  aria-hidden="true"
-                >
-                  <path d="M8 5v14M16 5v14" />
-                </svg>
-              </button>
-            </div>
-            <div>
-              <p class="eyebrow">PERSPECTIVA COMPLETĂ</p>
-              <h3>Locul în care<br>începe <em>povestea.</em></h3>
-              <p>
-                Uneori, ai nevoie să vezi întregul cadru. Spațiul, lumina și
-                deschiderea către natură sunt punctul de plecare pentru
-                atmosfera unui eveniment.
-              </p>
-              <button
-                type="button"
-                class="text-link text-button"
-                data-open-video="2026-01-14_DTfQlqzgg9I.mp4"
-              >
-                Vezi filmul panoramic <span>↗</span>
-              </button>
-            </div>
-          </article>
         </div>
 
         <div class="section-photos container single-photo">
@@ -1669,7 +1667,7 @@
           Arhitectură pentru<br><em>amintiri memorabile.</em>
         </p>
         <nav aria-label="Navigare în subsol">
-          <a href="#povestea">Povestea</a><a href="#servicii">Servicii</a
+          <a href="#povestea">Povestea</a><a href="#servicii">Servicii</a><a href="#locatii">Locații</a
           ><a href="#portofoliu">Portofoliu</a><a href="#contact">Contact</a>
         </nav>
         <div class="footer-social">

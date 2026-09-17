@@ -28,6 +28,9 @@ assert.equal(socialLogo.toString('ascii',1,4),'PNG');
 assert.equal(socialLogo.readUInt32BE(16),1254);
 assert.equal(socialLogo.readUInt32BE(20),1254);
 assert(/<video\s+data-panorama/.test(homepage),'Panoramic preview must be inline');
+const golfSection = homepage.match(/<article\b[^>]*aria-labelledby="golf-title"[\s\S]*?<\/article>/)?.[0];
+assert(golfSection && golfSection.indexOf('id="golf-title"') < golfSection.indexOf('data-panorama'), 'Show the panoramic presentation directly below the golf venue heading');
+assert.equal((homepage.match(/\bdata-panorama\b/g)||[]).length, 1, 'Do not duplicate the venue video elsewhere');
 assert.equal(data.gallery.length,31);
 assert.equal(new Set(data.gallery.map(p=>p.id)).size,31);
 vm.runInContext(fs.readFileSync(path.join(root,'assets/js/preview-gallery.js'),'utf8'),context);
@@ -63,7 +66,14 @@ assert(message.includes('19 iunie 2027'));
 assert(buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('De stabilit'));
 assert(!buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('undefined'));
 assert(data.testimonials.length >= 3 && data.testimonials.every(review=>review.verified===true),'Keep the reviews confirmed by the user approved and visible');
-assert(data.testimonials.every(review=>review.author==='Client ARRA Events'),'Preserve the anonymous attribution; do not invent client names');
+assert.deepEqual(Array.from(data.testimonials, review=>review.author), ['Valentina Marinoff','Andreea Tanasa','Oana M. Drăgan'], 'Only use the authors read in the public Facebook recommendations');
+for (const review of data.testimonials) {
+  assert(/^https:\/\/www\.facebook\.com\/[^/]+\/posts\//.test(review.source), 'Every review must link to its original post');
+  assert(fs.existsSync(path.join(root,review.photo)), 'Each sourced review needs its actual local author photo');
+}
+assert(homepage.includes('assets/images/hero-editorial.webp'), 'Use the generated long-table hero selected by the user');
+for (const text of ['Cabana Lăptici','Cabana Poarta Padina','National Golf','criogenate','Prosecco Bar','ursitoare','mașini']) assert(homepage.toLowerCase().includes(text.toLowerCase()), `Missing requested service/location: ${text}`);
+assert(fs.statSync(path.join(root,'assets/documents/the-green-national-golf-country-club.pdf')).size < 10000000, 'The venue PDF must be web-sized');
 const testimonialSection = homepage.match(/<section\b[^>]*\bid="testimoniale"[^>]*>/)?.[0];
 assert(testimonialSection && !/\bhidden\b/.test(testimonialSection), 'The approved testimonial section must remain visible');
 const sectionOrder = [...homepage.matchAll(/<section\b[^>]*\bid="([^"]+)"/g)].map(match=>match[1]);
