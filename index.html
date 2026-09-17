@@ -58,12 +58,13 @@
     <link rel="stylesheet" href="assets/css/style.css?v=20260916-pastel">
     <link rel="stylesheet" href="assets/css/whatsapp.css?v=20260916-pastel">
     <link rel="stylesheet" href="assets/css/editorial-preview.css?v=20260916-pastel">
-    <link rel="stylesheet" href="assets/css/client-refinements.css?v=20260917-client">
+    <link rel="stylesheet" href="assets/css/client-refinements.css?v=20260917-reviews-all">
     <script src="assets/js/brand-intro.js?v=20260917-client" defer></script>
-    <script src="assets/js/data.js?v=20260917-client" defer></script>
+    <script src="assets/js/data.js?v=20260917-reviews-all" defer></script>
     <script src="assets/js/preview-gallery.js?v=20260916-pastel" defer></script>
     <script src="assets/js/reel-carousel.js?v=20260917-reel-playback" defer></script>
-    <script src="assets/js/main.js?v=20260917-client" defer></script>
+    <script src="assets/js/testimonial-carousel.js?v=20260917-reviews-all" defer></script>
+    <script src="assets/js/main.js?v=20260917-reviews-all" defer></script>
     <script src="assets/js/animations.js?v=20260916-approved-reviews" defer></script>
     <script type="application/ld+json">
       {
@@ -417,10 +418,11 @@
                 ←
               </button>
               <div
-                id="review-dots"
-                class="review-dots"
-                role="group"
-                aria-label="Alege testimonialul"
+                id="review-count"
+                class="review-count"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
               ></div>
               <button
                 type="button"
@@ -428,15 +430,7 @@
                 id="reviews-next"
                 aria-label="Testimonialul următor"
               >
-                →</button
-              ><button
-                type="button"
-                class="review-autoplay"
-                id="review-autoplay"
-                aria-label="Pornește derularea automată a testimonialelor"
-                aria-pressed="true"
-              >
-                ▷
+                →
               </button>
             </div>
           </div>

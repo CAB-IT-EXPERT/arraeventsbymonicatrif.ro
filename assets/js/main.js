@@ -441,12 +441,10 @@ if (typeof document !== "undefined")
       if (document.hidden) modalVideo.pause();
       coordinateVideos();
       reelCarousel?.refresh();
-      scheduleReview();
     });
     reduced.addEventListener("change", () => {
       if (reduced.matches) videos.forEach((v) => v.pause());
       else coordinateVideos();
-      scheduleReview();
     });
     reelCarousel = createDesktopReelCarousel({
       track: reels, previous: $('#reels-prev'), next: $('#reels-next'),
@@ -458,104 +456,18 @@ if (typeof document !== "undefined")
       video.addEventListener('pause', () => video.closest('.reel').classList.remove('is-previewing'));
     });
 
-    // Only render approved, sourced reviews, with the full original wording.
-    // Keep future unapproved entries out of the public carousel.
-    const reviewSection = $("#testimoniale"),
-      reviews = ARRA.testimonials.filter(item => item.verified === true),
-      reviewTrack = $("#testimonials-track"),
-      reviewDots = $("#review-dots"),
-      reviewPause = $("#review-autoplay");
-    let reviewIndex = 0,
-      reviewTimer,
-      reviewsVisible = false,
-      reviewsPaused = true,
-      reviewsHovered = false;
+    // Only render client-approved recommendations read in the source posts.
+    const reviewSection = $("#testimoniale");
+    const reviews = ARRA.testimonials.filter(item => item.verified === true);
     if (reviews.length < 3) {
       reviewSection.hidden = true;
       $$('a[href="#testimoniale"]').forEach(link => { link.hidden = true; });
-    }
-    reviewTrack.innerHTML = reviews
-      .map(
-        (item, index) =>
-          `<figure class="testimonial${index === 0 ? " current" : ""}" aria-hidden="${index !== 0}" ${index !== 0 ? "inert" : ""}><figcaption class="review-person"><img src="${escape(item.photo)}" width="48" height="48" loading="lazy" alt="${escape(item.author)} — fotografia de profil Facebook"><div><cite>${escape(item.author)}</cite><small>${escape(item.category)}</small></div></figcaption><blockquote cite="${escape(item.source)}">${escape(item.text)}</blockquote><a class="review-source" href="${escape(item.source)}" target="_blank" rel="noopener noreferrer">Vezi recenzia pe Facebook <span aria-hidden="true">↗</span></a></figure>`,
-      )
-      .join("");
-    reviewDots.innerHTML = reviews
-      .map(
-        (_, i) =>
-          `<button type="button" aria-label="Testimonialul ${i + 1}" aria-pressed="${i === 0}" class="${i === 0 ? "active" : ""}"></button>`,
-      )
-      .join("");
-    function scheduleReview() {
-      clearTimeout(reviewTimer);
-      if (
-        !reviewSection.hidden &&
-        reviews.length >= 3 &&
-        !reviewsPaused &&
-        reviewsVisible &&
-        !reviewsHovered &&
-        !reduced.matches &&
-        !document.hidden &&
-        !$(".testimonial-slider").contains(document.activeElement)
-      )
-        reviewTimer = setTimeout(() => setReview(reviewIndex + 1), Math.max(12000, reviews[reviewIndex].text.split(/\s+/).length * 400));
-    }
-    function setReview(index) {
-      if (!reviews.length) return;
-      reviewIndex =
-        (index + reviews.length) % reviews.length;
-      $$(".testimonial").forEach((slide, i) => {
-        slide.classList.toggle("current", i === reviewIndex);
-        slide.setAttribute("aria-hidden", String(i !== reviewIndex));
-        slide.inert = i !== reviewIndex;
+    } else {
+      createTestimonialCarousel({
+        reviews, slider: $(".testimonial-slider"), track: $("#testimonials-track"),
+        counter: $("#review-count"), previous: $("#reviews-prev"), next: $("#reviews-next")
       });
-      $$("button", reviewDots).forEach((dot, i) => {
-        dot.classList.toggle("active", i === reviewIndex);
-        dot.setAttribute("aria-pressed", String(i === reviewIndex));
-      });
-      scheduleReview();
     }
-    $("#reviews-prev").addEventListener("click", () =>
-      setReview(reviewIndex - 1),
-    );
-    $("#reviews-next").addEventListener("click", () =>
-      setReview(reviewIndex + 1),
-    );
-    $$("button", reviewDots).forEach((dot, i) =>
-      dot.addEventListener("click", () => setReview(i)),
-    );
-    reviewPause.addEventListener("click", () => {
-      reviewsPaused = !reviewsPaused;
-      reviewPause.textContent = reviewsPaused ? "▷" : "Ⅱ";
-      reviewPause.setAttribute(
-        "aria-label",
-        reviewsPaused
-          ? "Pornește derularea automată"
-          : "Oprește derularea automată",
-      );
-      reviewPause.setAttribute("aria-pressed", String(reviewsPaused));
-      scheduleReview();
-    });
-    $(".testimonial-slider").addEventListener("mouseenter", () => {
-      reviewsHovered = true;
-      scheduleReview();
-    });
-    $(".testimonial-slider").addEventListener("mouseleave", () => {
-      reviewsHovered = false;
-      scheduleReview();
-    });
-    $(".testimonial-slider").addEventListener("focusin", scheduleReview);
-    $(".testimonial-slider").addEventListener("focusout", () =>
-      setTimeout(scheduleReview, 0),
-    );
-    if (!reviewSection.hidden && "IntersectionObserver" in window)
-      new IntersectionObserver(
-        (entries) => {
-          reviewsVisible = entries[0].isIntersecting;
-          scheduleReview();
-        },
-        { threshold: 0.25 },
-      ).observe(reviewTrack);
 
     // Nothing is sent by this page: WhatsApp opens a draft for the visitor to review.
     const form = $("#contact-form"),

@@ -64,8 +64,9 @@ Adresa `contact@arraeventsbymonicatrif.ro` este afișată cu link `mailto:`. Că
 
 ## De confirmat înainte de lansarea publică
 
-- Cele trei recenzii anonime au fost înlocuite la 17 septembrie 2026 cu recomandările publice citite în fila Facebook indicată de utilizator: Valentina Marinoff, Andreea Tanasa și Oana M. Drăgan. Sunt păstrate textele integrale, fotografiile de profil observate și linkurile directe la postări, fără note/steluțe inventate. Nu sunt folosite embed-uri Facebook sau URL-uri CDN expirabile.
-- Câmpul intern `verified: true` semnalează verificarea postării-sursă și autorizarea utilizatorului de a o include, nu o verificare a identității sau un badge acordat de platformă. Titularul site-ului rămâne responsabil pentru drepturile de republicare a textelor și fotografiilor. Recenziile adăugate ulterior trebuie aprobate înainte de publicare; caruselul filtrează intrările neaprobate. Caruselul pornește în pauză pentru lectura textului complet; autoplay-ul opțional ține cont de lungimea recenziei.
+- Sunt incluse toate cele 31 de recomandări pozitive citite la 17 septembrie 2026 în fila Facebook indicată de utilizator: 23 cu text integral și 8 fără citat lizibil. Toate au fotografia de profil observată și linkul individual la postare. Pentru recomandările fără text nu sunt inventate citate sau note. Utilizatorul a confirmat explicit că și recomandările vechi care menționează Decor Factory, AMazing Decor sau Ofelia le aparțin; formulările originale sunt păstrate.
+- Câmpul intern `verified: true` semnalează verificarea postării-sursă și autorizarea utilizatorului de a o include, nu o verificare a identității sau un badge acordat de platformă. Titularul site-ului rămâne responsabil pentru drepturile de republicare a textelor și fotografiilor. Recenziile adăugate ulterior trebuie aprobate înainte de publicare; caruselul filtrează intrările neaprobate. Nu sunt folosite embed-uri Facebook sau URL-uri CDN expirabile.
+- Recenziile se schimbă numai manual, prin săgeți, tastatură sau swipe. Butonul de play și autoplay-ul au fost eliminate. Cardul are înălțime constantă (460 px desktop/tabletă, 480 px mobil); textele lungi sunt complete și derulabile în interior, fără să deplaseze săgețile ori fotografiile. Contorul `01 / 31` înlocuiește punctele de paginare.
 - Titlurile portofoliului sunt editoriale, bazate pe fotografii. Nu pretind numele clienților, data, locația exactă sau rezultate neverificate. Filtrele fără fotografii, inclusiv Corporate, nu sunt afișate.
 - Clienta trebuie să confirme drepturile de utilizare pe website pentru fotografii, persoanele filmate și muzica din videoclipuri. Disponibilitatea pe Instagram nu confirmă automat licența muzicii pentru un website independent.
 - Confirmă că pagina Facebook furnizată (`amazingdecorbyapetreimihaela`) este destinația dorită; linkul este inclus exact conform solicitării, fără a presupune o identitate juridică între pagini.
@@ -80,6 +81,7 @@ Adresa `contact@arraeventsbymonicatrif.ro` este afișată cu link `mailto:`. Că
 - Interacțiuni și formular: `assets/js/main.js`.
 - Animații: `assets/js/animations.js`.
 - Carusel circular și gesturi: `assets/js/reel-carousel.js`.
+- Caruselul manual cu recomandări: `assets/js/testimonial-carousel.js`.
 - Telefon/email apar și în HTML și în informarea de confidențialitate; actualizează toate aparițiile dacă se schimbă.
 - Licențele OFL ale fonturilor sunt în `assets/fonts/licenses/`.
 
@@ -88,6 +90,7 @@ node scripts/check.cjs
 node scripts/check-carousel.cjs
 node scripts/check-video-preview.cjs
 node scripts/check-brand-intro.cjs
+node scripts/check-testimonials.cjs
 npx --yes --package html-validate html-validate index.html confidentialitate.html 404.html
 powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 ```

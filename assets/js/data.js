@@ -375,4 +375,228 @@ ARRA.testimonials = [
     source: "https://www.facebook.com/oanamdinu/posts/pfbid02SyWww4KLVLgDhcNRaTKivkEEZz11Dh8mmbdhDnhtkc1GVQXyot6otJnMqhLQ4Lrql",
     text: "Recomand!!\nmulțumim mult pentru cel mai frumos decor cristelnita cât și pentru buchete și lumânări ❣️",
   },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Isabela Mihaela",
+    "photo": "assets/images/reviews/isabela-mihaela.jpg",
+    "source": "https://www.facebook.com/isabela.mihaela.5/posts/pfbid0pZB6HpbQ8FN99dGMGY2TQSLoPDMS6jT63Y4eV5idyhVNbtFx8EedZcokHhgyeTVzl",
+    "text": "Mi-nu-nat!❤️\nÎncântată de buchetul pentru cununia civilă. Și acum, după aproape un an, se păstrează super bine."
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Angi Traistaru",
+    "photo": "assets/images/reviews/angi-traistaru.jpg",
+    "source": "https://www.facebook.com/viorel.traistaru.5/posts/pfbid0j9Je7MV7zVx5xsDf9eW5LVBMC5zkyjpb367TYZFBB56RWerA17W7J6i5nxU7mtQvl",
+    "text": "Sunt foarte bune la tot ce fac"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Alina Grosu",
+    "photo": "assets/images/reviews/alina-grosu.jpg",
+    "source": "https://www.facebook.com/alina.grosu.3/posts/pfbid02VH5dfgic3eAcaQXNS72q1Jb9HKYBeJRMwXyx3EP7eoxfLNQFctHAfTM4aNN6uGbzl",
+    "text": "Recomand!!!!! Mi au organizat botezul in 3 zile, au decorat locația superb !!!! Pozele vorbesc!!!!"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Mihaela Agripina",
+    "photo": "assets/images/reviews/mihaela-agripina.jpg",
+    "source": "https://www.facebook.com/AgripinaMihaela09.09/posts/pfbid02dtVsEV7yUuTWZUYUoZX9pk4E3jgRQ9kSPE2yC8W2DJDkYiX9UhnFS9FwP9TsBjaql",
+    "text": "Recomand cu încredere Amazon decor by Apetrei Mihaela pentru ca sunt profesioniști! Încă de la începutul colaborării ai parte de susținere, îndrumare și înțelegere! Noi suntem la al doilea eveniment organizat cu acești oameni deosebiți și pot sa spun ca ne au oferit mai mult decât ne am dorit și la prețuri mult mai bune decât tot ce se găsește pe piata! Multumim pentru răbdare și implicarea de care ați dat dovada! 5*"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Cristian Marius Molea",
+    "photo": "assets/images/reviews/cristian-marius-molea.jpg",
+    "source": "https://www.facebook.com/Cr1s7o21/posts/pfbid02QtcyjUBiwfU9JL1wnmaLg5EHxEQ2yFzDJ9hY2nTvWYYR9KzQWemWbs8mDwPpidbBl",
+    "text": ""
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Cristina Myky",
+    "photo": "assets/images/reviews/cristina-myky.jpg",
+    "source": "https://www.facebook.com/cristina.myky.9/posts/pfbid09Zm6ZBJCNpBKJxDoWEkdfjLNiPQHEWFuUV4YRZy1CeP9A54VujNjMM9uXX9ADYpal",
+    "text": "Recomand cu toată încrederea din lume 😍😍😍😍😘😘😘🤗🤗🤗"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Manolache Melania",
+    "photo": "assets/images/reviews/manolache-melania.jpg",
+    "source": "https://www.facebook.com/melaniabana/posts/pfbid02YTeS3Rrpq1vfRN5jMMhssL8PgCqRxQGsxuLnEvWpQ4FFYCEEGVHdvYNpZ3oBHE32l",
+    "text": "A fost totul foarte bine,aranjamentele de vis.\nMultumim frumos!🤗"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Ana Sky",
+    "photo": "assets/images/reviews/ana-sky.jpg",
+    "source": "https://www.facebook.com/ana.sky.5/posts/pfbid02WzF5Fi1y1KoJzoq6m1A4vKfJKX4Uv3n6V6MNRTdCf4dhqhR4pNCjYLiUZhVbVi4al",
+    "text": "Recomand cu drag. Totul a fost perfect!!!Ofelia a lucrat impecabil, este o persoana extraordinara si cu un simt al esteticului desavarsit. O sa va ajute cu idei si tot ce aveti nevoi. Va multumesc!!!"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Oana Niță",
+    "photo": "assets/images/reviews/oana-nita.jpg",
+    "source": "https://www.facebook.com/wannamaruntelu09/posts/pfbid02RGTqjEmkTdqebUVdPQ1g7Pr5YCeRK4eNKCJhReoEbsinsZe7T8BU5zVQGrBwcod3l",
+    "text": "Aranjamentele s-au ridicat la înălțimea așteptărilor mele, ba chiar au fost peste. Totul a fost divin, fix cum îmi doream, începând de la aranjamentele de pe mese, de la prezidiu si terminând cu leagănul de afara. \nDoamna Ofelia este minunata. Am ținut legatura cu dansa și mi-a oferit tot sprijinul ori de câte ori i-am scris. adevărați profesioniști 🤗\nVa mulțumesc din suflet ca m-ati ajutat sa am nunta pe care mi-am dorit-o!! \nrecomand din inima AMazing decor!!"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Alexandra Grigorie",
+    "photo": "assets/images/reviews/alexandra-grigorie.jpg",
+    "source": "https://www.facebook.com/alexandra.ioana.1401/posts/pfbid0atdviJ82nZxN9ZMNspdpCwQfmp3vXtNjJXKFAjkBCfsMWVpQDFkSngjWTERq8znHl",
+    "text": "Multumim din suflet pentru florile minunate și pentru implicarea doamnei!\nFoarte frumoase atat buchetele, cât și lumânările! Toate serviciile la superlativ!😘🥰"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Alexandru Gabriel Soare",
+    "photo": "assets/images/reviews/alexandru-gabriel-soare.jpg",
+    "source": "https://www.facebook.com/alexandrugabriel.soare.9/posts/pfbid02zzrRrbTKRv8JTHWK2PG77dv6pN6JRq6ZajdPtiawhpsveMeKTAMH1eRLnJCifQgEl",
+    "text": "Am apelat la Decor Factory pentru aranjamentele si elementele de decor pentru nunta noastra. Am gasit aici oameni dedicati, creativi si deschisi, care ne-au ajutat chiar si cu elemente personalizate. Totul a fost extraordinar! De-a lungul intregii colaborari au dat dovada de profesionalism si voie buna. Sala de nunta a aratat excelent datorita lor! Multumim Decor Factory!!!"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Elena Dinca",
+    "photo": "assets/images/reviews/elena-dinca.jpg",
+    "source": "https://www.facebook.com/elena.dinca.587/posts/pfbid0GyW9KupTMMfL4tRRpvsDRKnuJgNg6h6WSUJ3jDJaYYGKNur7v3PkEbA7njGJCPEyl",
+    "text": "Se zice ca \"prima dragoste nu se uita niciodata\" ...\nIn urma cu un an si jumatate am salvat o poza cu aranjamentul pe care il doream pentru mesele invitatiilor si masa de prezidiu ... cu 6 luni inainte de eveniment ne-am apucat sa cautam aranjamentul perfect ... si am tot cautat ... pe foarte multe site-uri, am mers la foarte multe targuri, pana cand v-am gasit pe voi ... la targ, cu aranjamentul nostru ales si salvat cu un an si jumatate in urma ... a fost \"dragoste la prima vedere\", aranjamentul perfect, tot ceea ce ne doream ❤\nFara nici o urma de indoiala, aranjamentele si accesoriile au fost asezate la milimetru, fiind prezenta dovada de multa atentie, pasiune, implicare si profesionalism 😁\nServiciile oferite, calitatea acestora,  raspunsurile prompte si imaginatia iesita din comun, ne fac sa alegem colaborarea cu DecorFactory si la viitoarele evenimente si sa va recomandam cu tot dragul ❤\nPrin decoratiunile oferite, ati luat parte la transformarea evenimentului nostru intr-o poveste de neuitat 😍\nTrecand peste partea profesionala, sunteti doi oameni frumosi cu care ne-a facut placere sa discutam si sa ne sfatuim de fiecare data 🤗\nSunteti minunati si va multumim din suflet 😍"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Christiana Anna",
+    "photo": "assets/images/reviews/christiana-anna.jpg",
+    "source": "https://www.facebook.com/timofte.christiana/posts/pfbid03EpELDPT45j6qjbKr4UfdVPgwVx7zT5i8JFZiXrLvh4yQrJ95zW2YjGmZPXtDK4ql",
+    "text": "Imaginatie, profesionalism... Ati creat un cadru perfect pentru nunta noastra, multumim pentru tot, a fost minunat💓"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Daniela Tudor",
+    "photo": "assets/images/reviews/daniela-tudor.jpg",
+    "source": "https://www.facebook.com/daniela.stanculeanu/posts/pfbid02md2NQqpNJ2Wyb7aQ1G1PqThACcZohpCyUASif1bZrsQEPaApnq5Hf9b3wFhac3yCl",
+    "text": "Va multumim pentru implicare si pentru aranjamentele deosebite. Recomand cu drag ♥️"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Andreea-Emilia Pasat Hoţoi",
+    "photo": "assets/images/reviews/andreea-emilia-pasat-hotoi.jpg",
+    "source": "https://www.facebook.com/andreea.pasat.hotoi/posts/pfbid0NeSgu7SXm33RZ6JJzNBXBK5qFpbs8PaCXMDqR3Wf1se4KCuQmm7t8dL8QCQ9wnYEl",
+    "text": "Bună dragilor, în primul rand vreau sa va mulțumesc din suflet pentru ajutorul și implicarea de care ați dat dovada la frumosul nostru eveniment. După cum știm aranjamentele florale și decorațiunile fac dintr-o nunta un eveniment de poveste care rămâne de neuitat, iar ceea ce ați realizat voi la nunta noastră este cu adevărat o implicare de nota 10. Va suntem recunoscători pentru atenția la detalii și pentru profesionalismul de care ați dat dovada. În al doilea rand recomand cu toată încrederea viitorilor miri sau celor care vor să-și transforme evenimentul într-unul magic sa apeleze la voi și sa transforme alături de echipa voastra visele în realitate. Aștept cu nerăbdare următoarea noastră colaborare, pentru ca acolo unde s-au creat deja legături frumoase nu se poate decât sa se dezvolte altele și mai frumoase. Succes în tot ceea ce faceți, felicitări și mulțumiri pentru ajutorul pe care ni l-ați acordat. Ne vom revedea curând. 💐🌸🌹🌺🌷🌼🌻"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Roxana Gheorghe",
+    "photo": "assets/images/reviews/roxana-gheorghe.jpg",
+    "source": "https://www.facebook.com/roccssana/posts/pfbid02z6sMe8CbXZMLzmxh4KsWqQsfo1GDMyuzAdkhn9ByNBmSXfuaQeWaxrvSswegFeSUl",
+    "text": ""
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Andreea Petre",
+    "photo": "assets/images/reviews/andreea-petre.jpg",
+    "source": "https://www.facebook.com/andreea.petre.161/posts/pfbid037h6Tj5Y7nQtL9XAPuQmmiLYmz6ajsQi3XLEH8uJwth3dTPdX6TvyNEYp1EnHhY4pl",
+    "text": "Mulțumim foaarte mult Andreea !! Decor de vis ! Toată lumea ne a felicitat ! Recomand cu caldura echipa Decor Factory ❤️❤️"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Bogdan Sarbu",
+    "photo": "assets/images/reviews/bogdan-sarbu.jpg",
+    "source": "https://www.facebook.com/bogdan.sarbu.906/posts/pfbid02w95hvZeD3TWxi9mNcqGaC8Po8oxmg8RW9HkpRUSyhgbqPeNLp2YC41mbRGj8vhX8l",
+    "text": "o firma serioasa si cu decoruri de vis"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Chirculescu Anca",
+    "photo": "assets/images/reviews/chirculescu-anca.jpg",
+    "source": "https://www.facebook.com/anca.stefanescu.1/posts/pfbid02CYrkGRHvFVM2r38axZzkAM4RAEzyk9dx7zJadhAbwTmna89jMXAfQqynhEc2iCR5l",
+    "text": ""
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Andreea Chele",
+    "photo": "assets/images/reviews/andreea-chele.jpg",
+    "source": "https://www.facebook.com/chele.andreea/posts/pfbid02erKiRJeAsLwcoQbMykV47nRouyGZV79PjRjBeY9irbNZiNq3DiXtT6dvJn99fzPl",
+    "text": "Aranjamente facute cu gust, rabdare si pasiune. Recomand pentru calitatea aranjamentelor si prompitudinea in a raspunde solicitarilor. Multumim DecorFactory! ❤"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Manea Dragos",
+    "photo": "assets/images/reviews/manea-dragos.jpg",
+    "source": "https://www.facebook.com/skyny.dragos/posts/pfbid0RDjYdPoYgPkeatjiFfix5vD1P4sDJxuwP92rboCe1wco2Bza5BjiQ2RBkFdU5bWzl",
+    "text": ""
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Minel Duduleanu",
+    "photo": "assets/images/reviews/minel-duduleanu.jpg",
+    "source": "https://www.facebook.com/minel.duduleanu/posts/pfbid02agqmuBiD6LGUPX6hxNPmmtg6VGHt6HRXxwavaznxqLYNxqYUwkvNE77Kws9qSDJnl",
+    "text": "Foarte frumos, calitate si bun gust."
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Costi Constantin",
+    "photo": "assets/images/reviews/costi-constantin.jpg",
+    "source": "https://www.facebook.com/costi.constantin.3576/posts/pfbid0m61Ybk1duaj21jGjnY7jjfYTZ5SdKq1uB1jidWsdHdNcpY8TAoKG8jKU67TTNHmbl",
+    "text": "A fost totul foarte bine , aranjamentele de vis !\nMultumim frumos"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Mihaela Ciocîrlan",
+    "photo": "assets/images/reviews/mihaela-ciocirlan.jpg",
+    "source": "https://www.facebook.com/michelle.shtephanie/posts/pfbid0LZz5fZy7mcxUhm72Gqu7yLtTaw81Uh77661Xe4AwJXTkAwucMPdqAui2FTvqUJsul",
+    "text": ""
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Roxana Lazăr",
+    "photo": "assets/images/reviews/roxana-lazar.jpg",
+    "source": "https://www.facebook.com/roxkatte/posts/pfbid0he3egf6J4Zg8dzMDTTHCkxThe5nA2qm26M5Z1xDLFafuCr2a9txaTEz2xGA8x8gcl",
+    "text": ""
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Ioana Floroiu",
+    "photo": "assets/images/reviews/ioana-floroiu.jpg",
+    "source": "https://www.facebook.com/permalink.php?story_fbid=pfbid029XFNiXgKRvsVr3HfLakfcBjxgAgMwEH1bNg6HZuW2tY8kbt7u1areUnrvEepueTal&id=100005886007598",
+    "text": "5 stele"
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Bucică Ștefan Daniel",
+    "photo": "assets/images/reviews/bucica-stefan-daniel.jpg",
+    "source": "https://www.facebook.com/stefan.daniel.9047/posts/pfbid02VMFQneFQMmwdWTRPE4AW3FHn73kSTze6qL2jhgn9xionrYsVcxXu8U1vk6oYHATl",
+    "text": ""
+  },
+  {
+    "category": "Recomandă ARRA · Facebook",
+    "verified": true,
+    "author": "Achim Catalin",
+    "photo": "assets/images/reviews/achim-catalin.jpg",
+    "source": "https://www.facebook.com/achim.catalin.7/posts/pfbid0WJ49rMB4oEkUUhKEG5CLQvn1MY97bYQwGwxAey2rZ3g9CqegLSWwxti3CkCbmvuXl",
+    "text": ""
+  },
 ];

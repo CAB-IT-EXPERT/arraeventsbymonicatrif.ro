@@ -1,4 +1,4 @@
-/* Local source/asset checks. No external service or real customer data is used. */
+/* Local source/asset checks. No external service is contacted. */
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -66,9 +66,14 @@ assert(message.includes('19 iunie 2027'));
 assert(buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('De stabilit'));
 assert(!buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('undefined'));
 assert(data.testimonials.length >= 3 && data.testimonials.every(review=>review.verified===true),'Keep the reviews confirmed by the user approved and visible');
-assert.deepEqual(Array.from(data.testimonials, review=>review.author), ['Valentina Marinoff','Andreea Tanasa','Oana M. Drăgan'], 'Only use the authors read in the public Facebook recommendations');
+assert.equal(data.testimonials.length, 31, 'Include all 31 positive recommendations read on the client Facebook page');
+assert.equal(new Set(data.testimonials.map(review=>review.author)).size, 31, 'Do not duplicate authors');
+assert.equal(data.testimonials.filter(review=>review.text.trim()).length, 23, 'Eight endorsements have no readable quote; never invent one');
+assert(!data.testimonials.some(review=>review.author === 'Andra Omran'), 'The requested selection is positive recommendations only');
+assert(!homepage.includes('id="review-autoplay"') && !homepage.includes('id="review-dots"'), 'No testimonial play button or oversized pagination dots');
+assert(homepage.includes('id="review-count"'), 'Display compact review pagination');
 for (const review of data.testimonials) {
-  assert(/^https:\/\/www\.facebook\.com\/[^/]+\/posts\//.test(review.source), 'Every review must link to its original post');
+  assert(/^https:\/\/www\.facebook\.com\/(?:[^/]+\/posts\/pfbid|permalink\.php\?story_fbid=pfbid)/.test(review.source), 'Every review must link to its original post');
   assert(fs.existsSync(path.join(root,review.photo)), 'Each sourced review needs its actual local author photo');
 }
 assert(homepage.includes('assets/images/hero-editorial.webp'), 'Use the generated long-table hero selected by the user');
