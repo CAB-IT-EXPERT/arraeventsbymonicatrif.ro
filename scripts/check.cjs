@@ -71,9 +71,10 @@ assert(message.includes('19 iunie 2027'));
 assert(buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('De stabilit'));
 assert(!buildWhatsAppMessage({name:'Test',phone:'0000000000',event:'Nuntă'}).includes('undefined'));
 assert(data.testimonials.length >= 3 && data.testimonials.every(review=>review.verified===true),'Keep the reviews confirmed by the user approved and visible');
-assert.equal(data.testimonials.length, 28, 'Keep only the currently approved recommendations');
-assert.equal(new Set(data.testimonials.map(review=>review.author)).size, 28, 'Do not duplicate authors');
-assert.equal(data.testimonials.filter(review=>review.text.trim()).length, 20, 'Eight endorsements have no readable quote; never invent one');
+assert.equal(data.testimonials.length, 26, 'Keep only the currently approved recommendations');
+assert.equal(new Set(data.testimonials.map(review=>review.author)).size, 26, 'Do not duplicate authors');
+assert(!data.testimonials.some(review => review.author === 'Ana Sky' || review.author === 'Oana Niță'), 'Remove Ana Sky and Oana Niță recommendations');
+assert.equal(data.testimonials.filter(review=>review.text.trim()).length, 18, 'Eight endorsements have no readable quote; never invent one');
 assert(!data.testimonials.some(review=>review.author === 'Andra Omran'), 'The requested selection is positive recommendations only');
 for (const removedAuthor of ['Andreea Chele','Andreea Petre','Alexandru Gabriel Soare','Mihaela Agripina']) {
   assert(!data.testimonials.some(review=>review.author === removedAuthor), `${removedAuthor} must remain removed at the client's request`);

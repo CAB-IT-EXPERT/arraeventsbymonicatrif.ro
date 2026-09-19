@@ -7,8 +7,8 @@ const context = {window:{}};
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/data.js'),'utf8').replace('window.ARRA =','var ARRA = window.ARRA ='),context);
 const reviews = context.window.ARRA.testimonials;
-const totalReviews = 28;
-const quoteReviews = 20;
+const totalReviews = 26;
+const quoteReviews = 18;
 const endorsementReviews = 8;
 function element() {
   return {
@@ -79,4 +79,4 @@ const css = fs.readFileSync(path.join(__dirname,'../assets/css/client-refinement
 assert(/\.testimonial \{ height: 460px;/.test(css));
 assert(/\.testimonial \{ height: 480px;/.test(css));
 assert(/\.review-body \{[^}]*overflow-y: auto/.test(css));
-console.log('PASS: 28 recommendations; 20 complete quotes; 8 endorsement-only cards; arrows and wrap; keyboard focus; swipe/vertical scroll/cancel; inert states; read position reset; fixed-size layout; no autoplay.');
+console.log('PASS: 26 recommendations; 18 complete quotes; 8 endorsement-only cards; arrows and wrap; keyboard focus; swipe/vertical scroll/cancel; inert states; read position reset; fixed-size layout; no autoplay.');

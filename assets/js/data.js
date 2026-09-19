@@ -426,22 +426,6 @@ ARRA.testimonials = [
   {
     "category": "Recomandă ARRA · Facebook",
     "verified": true,
-    "author": "Ana Sky",
-    "photo": "assets/images/reviews/ana-sky.jpg",
-    "source": "https://www.facebook.com/ana.sky.5/posts/pfbid02WzF5Fi1y1KoJzoq6m1A4vKfJKX4Uv3n6V6MNRTdCf4dhqhR4pNCjYLiUZhVbVi4al",
-    "text": "Recomand cu drag. Totul a fost perfect!!!Ofelia a lucrat impecabil, este o persoana extraordinara si cu un simt al esteticului desavarsit. O sa va ajute cu idei si tot ce aveti nevoi. Va multumesc!!!"
-  },
-  {
-    "category": "Recomandă ARRA · Facebook",
-    "verified": true,
-    "author": "Oana Niță",
-    "photo": "assets/images/reviews/oana-nita.jpg",
-    "source": "https://www.facebook.com/wannamaruntelu09/posts/pfbid02RGTqjEmkTdqebUVdPQ1g7Pr5YCeRK4eNKCJhReoEbsinsZe7T8BU5zVQGrBwcod3l",
-    "text": "Aranjamentele s-au ridicat la înălțimea așteptărilor mele, ba chiar au fost peste. Totul a fost divin, fix cum îmi doream, începând de la aranjamentele de pe mese, de la prezidiu si terminând cu leagănul de afara. \nDoamna Ofelia este minunata. Am ținut legatura cu dansa și mi-a oferit tot sprijinul ori de câte ori i-am scris. adevărați profesioniști 🤗\nVa mulțumesc din suflet ca m-ati ajutat sa am nunta pe care mi-am dorit-o!! \nrecomand din inima AMazing decor!!"
-  },
-  {
-    "category": "Recomandă ARRA · Facebook",
-    "verified": true,
     "author": "Alexandra Grigorie",
     "photo": "assets/images/reviews/alexandra-grigorie.jpg",
     "source": "https://www.facebook.com/alexandra.ioana.1401/posts/pfbid0atdviJ82nZxN9ZMNspdpCwQfmp3vXtNjJXKFAjkBCfsMWVpQDFkSngjWTERq8znHl",
