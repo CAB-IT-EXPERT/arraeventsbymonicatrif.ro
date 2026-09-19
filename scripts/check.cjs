@@ -27,10 +27,13 @@ const socialLogo = fs.readFileSync(path.join(root,'assets/images/arra-social-log
 assert.equal(socialLogo.toString('ascii',1,4),'PNG');
 assert.equal(socialLogo.readUInt32BE(16),1254);
 assert.equal(socialLogo.readUInt32BE(20),1254);
-assert(/<video\s+data-panorama/.test(homepage),'Panoramic preview must be inline');
+const locationScript = fs.readFileSync(path.join(root,'assets/js/location-carousels.js'),'utf8');
 const golfSection = homepage.match(/<article\b[^>]*aria-labelledby="golf-title"[\s\S]*?<\/article>/)?.[0];
-assert(golfSection && golfSection.indexOf('id="golf-title"') < golfSection.indexOf('data-panorama'), 'Show the panoramic presentation directly below the golf venue heading');
-assert.equal((homepage.match(/\bdata-panorama\b/g)||[]).length, 1, 'Do not duplicate the venue video elsewhere');
+assert(golfSection && golfSection.includes('data-location-carousel="golf"'), 'National Golf needs its own media carousel');
+for (const venue of ['golf','laptici','padina']) assert(homepage.includes(`data-location-carousel="${venue}"`), `Missing location carousel: ${venue}`);
+for (const id of ['location-media-dialog','location-modal-title']) assert(homepage.includes(`id="${id}"`), `Missing location lightbox control: ${id}`);
+for (const file of ['assets/video/2026-01-14_DTfQlqzgg9I.mp4','assets/video/locations/cabana-laptici-candelabre.mp4','assets/video/locations/poarta-padina-cer.mp4']) assert(locationScript.includes(file), `Missing venue film: ${file}`);
+assert.equal(fs.readdirSync(path.join(root,'assets/images/locations')).filter(file => file.endsWith('.webp')).length,36,'Keep the curated responsive venue image set');
 assert.equal(data.gallery.length,31);
 assert.equal(new Set(data.gallery.map(p=>p.id)).size,31);
 vm.runInContext(fs.readFileSync(path.join(root,'assets/js/preview-gallery.js'),'utf8'),context);
@@ -56,8 +59,9 @@ for (const file of ['index.html','confidentialitate.html','404.html']) {
 for (const [,url] of fs.readFileSync(path.join(root,'assets/css/style.css'),'utf8').matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)) required.add(path.posix.normalize('assets/css/'+url));
 data.gallery.forEach(photo => { assert(photo.title && photo.description && photo.alt); [480,900,1440].forEach(size=>required.add(`assets/images/photo-${photo.id}-${size}.webp`)); });
 data.reels.forEach(video=>{required.add('assets/video/'+video.file);required.add('assets/posters/'+video.code+'.webp');});
+for (const [,file] of locationScript.matchAll(/["`]((?:assets\/)[^"`?#]+\.(?:webp|jpg|mp4))/g)) required.add(file);
 required.forEach(file=>assert(fs.existsSync(path.join(root,file)),`Missing local file ${file}`));
-for (const file of ['main.js','data.js','preview-gallery.js','animations.js','reel-carousel.js']) new vm.Script(fs.readFileSync(path.join(root,'assets/js',file),'utf8'),{filename:file});
+for (const file of ['main.js','data.js','preview-gallery.js','animations.js','reel-carousel.js','location-carousels.js']) new vm.Script(fs.readFileSync(path.join(root,'assets/js',file),'utf8'),{filename:file});
 const details = {name:'Test local',phone:'0000000000',email:'test@example.invalid',event:'Cerere în căsătorie',date:'2027-06-19',location:'Locație de test',guests:'100',message:'Pastel & auriu + flori\nIdee cu diacritice: șțâîă <3'};
 const message = buildWhatsAppMessage(details), url = new URL(buildWhatsAppURL(data.company.phone,message));
 assert.equal(url.hostname,'wa.me'); assert.equal(url.pathname,'/40753037078');

@@ -58,9 +58,10 @@
     <link rel="stylesheet" href="assets/css/style.css?v=20260916-pastel">
     <link rel="stylesheet" href="assets/css/whatsapp.css?v=20260916-pastel">
     <link rel="stylesheet" href="assets/css/editorial-preview.css?v=20260916-pastel">
-    <link rel="stylesheet" href="assets/css/client-refinements.css?v=20260917-reviews-monica">
+    <link rel="stylesheet" href="assets/css/client-refinements.css?v=20260919-venues-footer">
     <script src="assets/js/brand-intro.js?v=20260917-client" defer></script>
     <script src="assets/js/data.js?v=20260917-reviews-monica" defer></script>
+    <script src="assets/js/location-carousels.js?v=20260919-venues" defer></script>
     <script src="assets/js/preview-gallery.js?v=20260916-pastel" defer></script>
     <script src="assets/js/reel-carousel.js?v=20260917-reel-playback" defer></script>
     <script src="assets/js/testimonial-carousel.js?v=20260917-reviews-monica" defer></script>
@@ -748,48 +749,73 @@
           <div class="section-heading centered">
             <p class="eyebrow">LOCURI PENTRU POVESTEA TA</p>
             <h2 id="venues-title">Trei colaborări.<br><em>Nenumărate posibilități.</em></h2>
-            <p class="section-intro">Descoperă locațiile partenere sau spune-ne unde visezi să fie evenimentul tău.</p>
+            <p class="section-intro">De la eleganța unui domeniu deschis până la liniștea cabanelor dintre brazi, alegem cadrul care seamănă cu povestea ta.</p>
           </div>
-          <article class="venue-feature" aria-labelledby="golf-title">
-            <header class="venue-heading">
-              <p class="eyebrow">THE GREEN EVENTS</p>
-              <h3 id="golf-title">National Golf<br><em>and Country Club</em></h3>
-            </header>
-            <div class="venue-film">
-              <div class="landscape-media is-paused" id="panoramic-film">
-                <video
-                  data-panorama
-                  data-src="assets/video/2026-01-14_DTfQlqzgg9I.mp4"
-                  data-media-version="20260916-panorama"
-                  poster="assets/posters/DTfQlqzgg9I.webp?v=20260916-panorama"
-                  width="1280"
-                  height="576"
-                  muted
-                  loop
-                  playsinline
-                  preload="none"
-                  title="Prezentare panoramică — National Golf and Country Club"
-                ></video>
-                <button type="button" class="landscape-play" aria-label="Redă filmul panoramic: National Golf and Country Club" aria-pressed="false">
-                  <svg class="panorama-play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m8 5 11 7-11 7Z" /></svg>
-                  <svg class="panorama-pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg>
-                </button>
+          <div class="mountain-intro" aria-labelledby="mountain-title">
+            <div class="mountain-copy">
+              <p class="eyebrow">PADINA · BUCEGI</p>
+              <h3 id="mountain-title">Aproape de natură.<br><em>Departe de grabă.</em></h3>
+              <p>Lacul, pădurea și lumina muntelui dau ritmul unor evenimente care se simt libere, calde și cu adevărat personale.</p>
+            </div>
+            <div class="mountain-mosaic" aria-label="Peisaje din zona Padina">
+              <button type="button" data-location-scene="0"><img src="assets/images/locations/zona-lacul-bolboci-480.webp" width="360" height="480" alt="Lacul dintre brazi" loading="lazy"></button>
+              <button type="button" data-location-scene="1"><img src="assets/images/locations/zona-izvor-munte-480.webp" width="360" height="480" alt="Izvor de munte" loading="lazy"></button>
+              <button type="button" data-location-scene="2"><img src="assets/images/locations/zona-padure-lac-480.webp" width="360" height="480" alt="Lacul văzut printre brazi" loading="lazy"></button>
+              <button type="button" data-location-scene="3"><img src="assets/images/locations/zona-poiana-eveniment-480.webp" width="480" height="360" alt="Poiană pregătită pentru eveniment" loading="lazy"></button>
+            </div>
+          </div>
+
+          <div class="venue-stories">
+            <article class="venue-story" aria-labelledby="golf-title">
+              <div class="venue-story-copy">
+                <p class="eyebrow">01 · THE GREEN EVENTS</p>
+                <h3 id="golf-title">National Golf<br><em>and Country Club</em></h3>
+                <p>Celebrări private, evenimente corporate și seri de socializare într-un domeniu elegant, luminos și deschis către natură.</p>
+                <ul class="venue-tags" aria-label="Potrivit pentru"><li>Evenimente private</li><li>Corporate</li><li>Recepții în aer liber</li></ul>
+                <div class="venue-actions"><a class="button gold" href="assets/documents/the-green-national-golf-country-club.pdf" target="_blank" rel="noopener">Vezi prezentarea <span aria-hidden="true">↗</span></a><a class="text-link" href="#contact" data-location="National Golf and Country Club">Întreabă despre locație <span aria-hidden="true">↗</span></a></div>
               </div>
-              <button type="button" class="text-link text-button" data-open-video="2026-01-14_DTfQlqzgg9I.mp4">Vezi filmul pe tot ecranul <span aria-hidden="true">↗</span></button>
-            </div>
-            <div class="venue-copy">
-              <p>Celebrări private, evenimente corporate și seri de socializare într-un cadru deschis către natură. Descoperă spațiile și atmosfera în prezentarea locației.</p>
-              <a class="venue-preview" href="assets/documents/the-green-national-golf-country-club.pdf" target="_blank" rel="noopener" aria-label="Deschide prezentarea The Green Events, PDF, într-o filă nouă">
-                <img src="assets/images/the-green-preview.jpg" width="1100" height="619" alt="Coperta prezentării The Green Events, National Golf and Country Club" loading="lazy">
-                <span>Explorează prezentarea <span aria-hidden="true">↗</span></span>
-              </a>
-              <div class="venue-actions"><a class="button gold" href="assets/documents/the-green-national-golf-country-club.pdf" target="_blank" rel="noopener">Vezi prezentarea <span aria-hidden="true">↗</span></a><a class="text-link" href="assets/documents/the-green-national-golf-country-club.pdf" download>Descarcă PDF <span aria-hidden="true">↓</span></a></div>
-              <p class="venue-file-note">13 pagini · PDF, 5 MB</p>
-            </div>
-          </article>
-          <div class="venue-options">
-            <article><span class="eyebrow">LOCAȚIE PARTENERĂ</span><h3>Cabana <em>Lăptici</em></h3><p>Unul dintre locurile cu care colaborăm pentru evenimentul tău. Povestim despre planurile tale și verificăm împreună disponibilitatea.</p><a class="text-link" href="#contact" data-location="Cabana Lăptici">Hai să vorbim despre Lăptici <span aria-hidden="true">↗</span></a></article>
-            <article><span class="eyebrow">LOCAȚIE PARTENERĂ</span><h3>Cabana <em>Poarta Padina</em></h3><p>O altă posibilitate din selecția noastră de locații partenere. Alegem împreună cadrul potrivit pentru oamenii și momentele tale.</p><a class="text-link" href="#contact" data-location="Cabana Poarta Padina">Hai să vorbim despre Poarta Padina <span aria-hidden="true">↗</span></a></article>
+              <div class="location-carousel" data-location-carousel="golf">
+                <div class="location-stage" data-location-stage></div>
+                <div class="location-carousel-bar">
+                  <div class="location-arrows"><button type="button" data-location-prev aria-label="Imaginea anterioară">←</button><span data-location-count aria-live="polite">01 / 02</span><button type="button" data-location-next aria-label="Imaginea următoare">→</button></div>
+                  <div class="location-thumbs" data-location-thumbs aria-label="Alege cadrul"></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="venue-story venue-story-reverse" aria-labelledby="laptici-title">
+              <div class="venue-story-copy">
+                <p class="eyebrow">02 · ÎNTRE CER ȘI PĂMÂNT</p>
+                <h3 id="laptici-title">Cabana <em>Lăptici</em></h3>
+                <p>O poiană ascunsă între brazi, unde mesele lungi, candelabrele și serile în aer liber capătă o atmosferă rară.</p>
+                <ul class="venue-tags" aria-label="Potrivit pentru"><li>Nunți în natură</li><li>Cine private</li><li>Evenimente restrânse</li></ul>
+                <a class="text-link" href="#contact" data-location="Cabana Lăptici">Hai să vorbim despre Lăptici <span aria-hidden="true">↗</span></a>
+              </div>
+              <div class="location-carousel" data-location-carousel="laptici">
+                <div class="location-stage" data-location-stage></div>
+                <div class="location-carousel-bar">
+                  <div class="location-arrows"><button type="button" data-location-prev aria-label="Imaginea anterioară">←</button><span data-location-count aria-live="polite">01 / 08</span><button type="button" data-location-next aria-label="Imaginea următoare">→</button></div>
+                  <div class="location-thumbs" data-location-thumbs aria-label="Alege cadrul"></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="venue-story" aria-labelledby="padina-title">
+              <div class="venue-story-copy">
+                <p class="eyebrow">03 · ÎNTRE CER ȘI PĂMÂNT</p>
+                <h3 id="padina-title">Cabana <em>Poarta Padina</em></h3>
+                <p>Un salon cald, cu texturi naturale, potrivit pentru evenimente intime, petreceri tematice și celebrări de familie.</p>
+                <ul class="venue-tags" aria-label="Potrivit pentru"><li>Evenimente intime</li><li>Botezuri</li><li>Petreceri tematice</li></ul>
+                <a class="text-link" href="#contact" data-location="Cabana Poarta Padina">Hai să vorbim despre Poarta Padina <span aria-hidden="true">↗</span></a>
+              </div>
+              <div class="location-carousel" data-location-carousel="padina">
+                <div class="location-stage" data-location-stage></div>
+                <div class="location-carousel-bar">
+                  <div class="location-arrows"><button type="button" data-location-prev aria-label="Imaginea anterioară">←</button><span data-location-count aria-live="polite">01 / 08</span><button type="button" data-location-next aria-label="Imaginea următoare">→</button></div>
+                  <div class="location-thumbs" data-location-thumbs aria-label="Alege cadrul"></div>
+                </div>
+              </div>
+            </article>
           </div>
           <div class="venue-choice"><p class="signature">Sau locul pe care îl ai deja în suflet.</p><p>Ai ales deja o locație? Organizăm evenimentul și în spațiul ales de tine.</p><a class="text-link" href="#contact">Spune-ne unde începe povestea <span aria-hidden="true">↗</span></a></div>
         </div>
@@ -1776,6 +1802,33 @@
           <a class="text-link" href="#contact" data-gallery-contact
             >O poveste și pentru tine <span>↗</span></a
           ><span id="lightbox-count" aria-live="polite"></span>
+        </div>
+      </div>
+    </dialog>
+    <dialog
+      id="location-media-dialog"
+      class="location-media-dialog"
+      aria-labelledby="location-modal-title"
+    >
+      <button
+        type="button"
+        class="close-button modal-close"
+        aria-label="Închide galeria locației"
+      >
+        ×
+      </button>
+      <div class="location-modal-shell">
+        <div class="location-modal-media">
+          <img data-location-modal-image src="assets/images/locations/zona-lacul-bolboci-1600.webp" alt="" decoding="async">
+          <video data-location-modal-video controls playsinline preload="metadata" hidden></video>
+          <button type="button" class="location-modal-arrow previous" data-location-modal-prev aria-label="Cadrul anterior">←</button>
+          <button type="button" class="location-modal-arrow next" data-location-modal-next aria-label="Cadrul următor">→</button>
+        </div>
+        <div class="location-modal-copy">
+          <p class="eyebrow" data-location-modal-category>LOCAȚIE</p>
+          <h2 id="location-modal-title" data-location-modal-title>Galeria locației</h2>
+          <p data-location-modal-description></p>
+          <span data-location-modal-count aria-live="polite">01 / 01</span>
         </div>
       </div>
     </dialog>
