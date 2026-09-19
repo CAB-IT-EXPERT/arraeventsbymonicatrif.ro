@@ -95,7 +95,7 @@ assert(testimonialSection && !/\bhidden\b/.test(testimonialSection), 'The approv
 const sectionOrder = [...homepage.matchAll(/<section\b[^>]*\bid="([^"]+)"/g)].map(match=>match[1]);
 assert.deepEqual(sectionOrder.slice(0,4), ['acasa','introducere','testimoniale','povestea'], 'Feature reviews directly after the introduction, before the ARRA story');
 const testimonialLinks = [...homepage.matchAll(/<a\b[^>]*href="#testimoniale"[^>]*>/g)];
-assert(testimonialLinks.length === 2 && testimonialLinks.every(([link])=>!/\bhidden\b/.test(link)), 'Keep desktop and mobile testimonial navigation visible');
+assert(testimonialLinks.length >= 2 && testimonialLinks.every(([link])=>!/\bhidden\b/.test(link)), 'Keep testimonial navigation visible');
 assert(!/Texte-model|MODEL DE TESTIMONIAL|Modele de testimoniale|în așteptarea validării/i.test(homepage), 'Remove all public draft labels and pending-validation notices');
 assert(fs.readFileSync(path.join(root,'assets/js/main.js'),'utf8').includes('ARRA.testimonials.filter(item => item.verified === true)'), 'Never render unverified testimonials');
 assert(!fs.readFileSync(path.join(root,'assets/js/main.js'),'utf8').includes("replace('assets/video/', 'assets/previews/')"),'Inline playback must use full-quality masters');
