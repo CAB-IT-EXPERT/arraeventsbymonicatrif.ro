@@ -51,8 +51,9 @@ process.stdin.on('end', async () => {
     if (resumePath && (!previous || path.dirname(resumePath) !== path.join(root, 'qa') || !path.basename(resumePath).startsWith('deployment-'))) throw new Error('Invalid interrupted deployment directory.');
     // Refuse an unexpected populated asset tree; do not overwrite another deployment blindly.
     if (existing.has('assets') && !previous) throw new Error('Remote assets already exist. Use --update with the last verified deployment manifest.');
-    const assets = fs.readdirSync(path.join(root, 'assets'), { recursive: true, withFileTypes: true })
-      .filter(entry => entry.isFile()).map(entry => path.relative(root, path.join(entry.parentPath || entry.path, entry.name)).replaceAll('\\', '/'));
+    const publicTrees = ['assets', 'cabitexpert'];
+    const assets = publicTrees.flatMap(directory => fs.readdirSync(path.join(root, directory), { recursive: true, withFileTypes: true })
+      .filter(entry => entry.isFile()).map(entry => path.relative(root, path.join(entry.parentPath || entry.path, entry.name)).replaceAll('\\', '/')));
     const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
     const manifest = [...assets, ...rootFiles].map(file => {
       const bytes = fs.readFileSync(path.join(root, file));
