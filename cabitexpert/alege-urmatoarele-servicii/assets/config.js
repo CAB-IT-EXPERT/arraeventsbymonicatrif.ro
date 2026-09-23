@@ -46,7 +46,7 @@
         notice: 'Bugetul efectiv cheltuit în Google Ads este separat și nu intră în totalul de mai jos.',
         bundles: [
           {
-            id: 'google-search', title: 'Google Search', badge: 'Servicii & căutări', description: 'Pentru persoanele care caută activ servicii relevante în Google.',
+            id: 'google-search', title: 'Google Search', badge: 'Servicii & căutări', description: 'Pentru persoanele care caută activ servicii relevante în Google.', budgetNotice: 'Costurile serviciilor CAB-IT Expert sunt separate de bugetul alocat reclamelor Google Ads.',
             items: [
               item('google_search_setup', 'Inițializare campanie', 450, 'once', 'Structură, grupuri de reclame, targetare, cuvinte-cheie, reclame și lansare.'),
               item('google_search_maintenance', 'Mentenanță campanie', 450, 'monthly', 'Administrare recurentă, optimizarea reclamelor și a cuvintelor-cheie.', {minMonths:1,defaultMonths:1}),
@@ -55,7 +55,7 @@
             ]
           },
           {
-            id: 'google-shopping', title: 'Google Shopping', badge: 'Pentru produse', description: 'Reclame pentru produse; necesită magazin online și un catalog eligibil.',
+            id: 'google-shopping', title: 'Google Shopping', badge: 'Pentru produse', description: 'Reclame pentru produse; necesită magazin online și un catalog eligibil.', budgetNotice: 'Costurile serviciilor CAB-IT Expert sunt separate de bugetul alocat reclamelor Google Ads.',
             items: [
               item('shopping_setup', 'Inițializare campanie', 450, 'once', 'Crearea și configurarea inițială a campaniei Shopping.'),
               item('shopping_maintenance', 'Mentenanță', 450, 'monthly', 'Administrarea și optimizarea recurentă a campaniei.', {minMonths:1,defaultMonths:1}),
@@ -64,7 +64,7 @@
             ]
           },
           {
-            id: 'google-call', title: 'Campanie pentru apeluri', badge: 'Contact rapid', description: 'Campanie orientată către persoane care vor să contacteze rapid afacerea prin telefon.',
+            id: 'google-call', title: 'Campanie pentru apeluri', badge: 'Contact rapid', description: 'Campanie orientată către persoane care vor să contacteze rapid afacerea prin telefon.', budgetNotice: 'Costurile serviciilor CAB-IT Expert sunt separate de bugetul alocat reclamelor Google Ads.',
             items: [
               item('google_call_setup', 'Inițializare campanie', 250, 'once', 'Configurarea campaniei orientate spre apeluri.'),
               item('google_call_maintenance', 'Mentenanță', 350, 'monthly', 'Administrare și optimizare lunară.', {minMonths:1,defaultMonths:1}),
@@ -84,7 +84,7 @@
         notice: 'Bugetele plătite către Meta și TikTok sunt separate de serviciile CAB-IT Expert.',
         bundles: [
           {
-            id:'meta-post', title:'Meta — promovare postare', badge:'Facebook + Instagram', description:'Pentru servicii, evenimente, postări, oferte sau branding.',
+            id:'meta-post', title:'Meta — promovare postare', badge:'Facebook + Instagram', description:'Pentru servicii, evenimente, postări, oferte sau branding.', budgetNotice:'Costurile serviciilor CAB-IT Expert sunt separate de bugetul alocat reclamelor Meta Ads pe Facebook și Instagram.',
             items:[
               item('meta_post_setup','Creare campanie',400,'once','Configurarea campaniei, obiectivului, audienței și plasamentelor.'),
               item('meta_post_monitor','Monitorizare campanie',200,'once','Urmărirea campaniei și ajustări de bază pe durata stabilită.'),
@@ -92,7 +92,7 @@
             ]
           },
           {
-            id:'meta-catalog', title:'Meta — catalog de produse', badge:'E-commerce', description:'Reclame dinamice pentru produse dintr-un catalog compatibil.',
+            id:'meta-catalog', title:'Meta — catalog de produse', badge:'E-commerce', description:'Reclame dinamice pentru produse dintr-un catalog compatibil.', budgetNotice:'Costurile serviciilor CAB-IT Expert sunt separate de bugetul alocat reclamelor Meta Ads pe Facebook și Instagram.',
             items:[
               item('meta_catalog_setup','Creare campanie catalog',650,'once','Configurarea campaniei pentru catalog și a structurii necesare; conversiile sunt incluse.'),
               item('meta_catalog_monitor','Monitorizare campanie',350,'once','Urmărirea rezultatelor catalogului.'),
@@ -100,7 +100,7 @@
             ]
           },
           {
-            id:'tiktok-post', title:'TikTok — promovare postare', badge:'Video', description:'Promovarea conținutului video pentru vizibilitate, trafic sau contacte.',
+            id:'tiktok-post', title:'TikTok — promovare postare', badge:'Video', description:'Promovarea conținutului video pentru vizibilitate, trafic sau contacte.', budgetNotice:'Costurile serviciilor CAB-IT Expert sunt separate de bugetul alocat reclamelor TikTok Ads.',
             items:[
               item('tiktok_post_setup','Creare campanie',200,'once','Configurarea campaniei și a obiectivului potrivit.'),
               item('tiktok_post_monitor','Monitorizare campanie',100,'once','Urmărirea campaniei pe perioada stabilită.'),
@@ -108,7 +108,7 @@
             ]
           },
           {
-            id:'tiktok-catalog', title:'TikTok — catalog de produse', badge:'E-commerce', description:'Pentru produse sincronizate și conversii urmărite corect.',
+            id:'tiktok-catalog', title:'TikTok — catalog de produse', badge:'E-commerce', description:'Pentru produse sincronizate și conversii urmărite corect.', budgetNotice:'Costurile serviciilor CAB-IT Expert sunt separate de bugetul alocat reclamelor TikTok Ads.',
             items:[
               item('tiktok_catalog_setup','Creare campanie catalog',650,'once','Configurarea campaniei, catalogului și conversiilor.'),
               item('tiktok_catalog_monitor','Monitorizare campanie',350,'once','Urmărirea campaniei de catalog.'),

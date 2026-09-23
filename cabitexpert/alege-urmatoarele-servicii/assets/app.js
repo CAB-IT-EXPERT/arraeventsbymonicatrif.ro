@@ -25,7 +25,9 @@
     selected: {},
     months: {},
     dates: {},
+    dayCounts: {},
     startDates: {},
+    itemNotes: {},
     storePackage: '',
     exportSections: [],
     notes: ''
@@ -70,9 +72,19 @@
         next.dates[item.id] = [...new Set(valid)].sort();
       });
     }
+    if (raw.dayCounts && typeof raw.dayCounts === 'object') {
+      allItems.filter(item => item.billing === 'daily').forEach(item => {
+        if (next.selected[item.id]) next.dayCounts[item.id] = clamp(raw.dayCounts[item.id], 1, 366);
+      });
+    }
     if (raw.startDates && typeof raw.startDates === 'object') {
       [...allItems.map(item => item.id), 'store_package', 'exports'].forEach(id => {
         if (typeof raw.startDates[id] === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(raw.startDates[id])) next.startDates[id] = raw.startDates[id];
+      });
+    }
+    if (raw.itemNotes && typeof raw.itemNotes === 'object') {
+      [...allItems.map(item => item.id), 'store_package', 'exports'].forEach(id => {
+        if (typeof raw.itemNotes[id] === 'string') next.itemNotes[id] = raw.itemNotes[id].slice(0,600);
       });
     }
     const allowedExports = new Set(config.automation.exportSections.map(option => option.id));
@@ -80,13 +92,19 @@
     enforceDependencies(next, false);
     const fallbackDate = next.startMonth === currentMonth() ? today : `${next.startMonth}-01`;
     allItems.forEach(item => {
-      if (next.selected[item.id] && item.billing !== 'daily') next.startDates[item.id] ||= fallbackDate;
+      if (next.selected[item.id]) {
+        if (item.billing === 'daily') {
+          next.startDates[item.id] ||= next.dates[item.id]?.[0] || fallbackDate;
+          next.dayCounts[item.id] = clamp(next.dayCounts[item.id] || next.dates[item.id]?.length || 1, 1, 366);
+        } else next.startDates[item.id] ||= fallbackDate;
+      }
       if (!next.selected[item.id]) delete next.startDates[item.id];
+      if (!next.selected[item.id]) delete next.itemNotes[item.id];
     });
     if (next.storePackage) next.startDates.store_package ||= fallbackDate;
-    else delete next.startDates.store_package;
+    else { delete next.startDates.store_package; delete next.itemNotes.store_package; }
     if (next.exportSections.length) next.startDates.exports ||= fallbackDate;
-    else delete next.startDates.exports;
+    else { delete next.startDates.exports; delete next.itemNotes.exports; }
     return next;
   }
 
@@ -125,6 +143,7 @@
       stock:'<path d="m4 8 8-4 8 4-8 4-8-4Z"/><path d="m4 8v8l8 4 8-4V8M12 12v8"/>',
       sheet:'<path d="M5 3h10l4 4v14H5V3Z"/><path d="M14 3v5h5M8 12h8m-8 4h8"/>',
       blog:'<path d="M4 5h16v14H4V5Z"/><path d="M8 9h8m-8 4h8m-8 3h5"/>',
+      wallet:'<path d="M4 6h14a2 2 0 0 1 2 2v10H4a2 2 0 0 1-2-2V6a3 3 0 0 1 3-3h12"/><path d="M15 11h6v4h-6a2 2 0 0 1 0-4Z"/>',
       check:'<path d="m5 12 4 4L19 6"/>'
     };
     return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name] || paths.check}</svg>`;
@@ -158,20 +177,21 @@
     const price = itemPrice(item);
     const disabled = item.parent && !selected(item.parent);
     const months = state.months[item.id] || item.defaultMonths || item.minMonths || 1;
-    const dates = state.dates[item.id] || [];
+    const days = state.dayCounts[item.id] || 1;
     return `<article class="service-option ${isSelected ? 'selected' : ''} ${disabled ? 'disabled' : ''}" data-option="${item.id}">
       <div class="option-main">
         <button class="switch" type="button" role="switch" aria-checked="${isSelected}" data-action="toggle" data-id="${item.id}" ${disabled ? 'disabled' : ''}><span></span></button>
         <div class="option-copy">
-          <div class="option-title-line"><span class="service-glyph">${serviceIcon(item.id)}</span><h4>${escapeHtml(item.label)}</h4>${item.recommended ? '<span class="mini-badge">Recomandat</span>' : ''}</div>
+          <div class="option-title-line"><span class="service-glyph">${serviceIcon(item.id)}</span><h4>${escapeHtml(item.label)}</h4>${item.recommended ? `<span class="mini-badge">${icon('spark')} Recomandat CAB-IT</span>` : ''}</div>
           <div class="price-line"><strong>${item.pricePrefix ? `${item.pricePrefix} ` : ''}${lei(price)}</strong><span>${billingLabel(item.billing)}</span>${item.resultWindow ? `<small>rezultate estimate ${item.resultWindow}</small>` : ''}</div>
         </div>
         <button class="info-button" type="button" aria-label="Explicație pentru ${escapeHtml(item.label)}" aria-expanded="false" data-action="tooltip" data-tip="tip-${item.id}">i</button>
         <div class="tooltip" id="tip-${item.id}" role="tooltip">${escapeHtml(item.detail)}</div>
       </div>
       ${item.billing === 'monthly' && isSelected ? monthControl(item, months) : ''}
-      ${item.billing === 'daily' && isSelected ? dateControl(item, dates) : ''}
+      ${item.billing === 'daily' && isSelected ? dailyControl(item, days) : ''}
       ${item.billing !== 'daily' && isSelected ? startDateControl(item.id) : ''}
+      ${isSelected ? itemNoteControl(item.id, item.label) : ''}
     </article>`;
   }
 
@@ -197,12 +217,17 @@
     return `<label class="start-date-control">${icon('calendar')}<span><strong>${label}</strong><small>Costul va fi inclus în luna acestei date.</small></span><input type="date" value="${value}" data-start-date="${id}" aria-label="${escapeHtml(label)}"></label>`;
   }
 
-  function dateControl(item, dates) {
-    return `<div class="date-control">
-      <div class="date-heading">${icon('calendar')}<span><strong>Alege zilele dorite</strong><small>${dates.length ? `${dates.length} ${dates.length === 1 ? 'zi selectată' : 'zile selectate'} · ${lei(dates.length * item.price)}` : 'Selectează datele exacte din calendar'}</small></span></div>
-      <div class="date-add"><input type="date" min="${today}" data-date-input="${item.id}" aria-label="Dată pentru ${escapeHtml(item.label)}"><button type="button" data-action="add-date" data-id="${item.id}">Adaugă ziua</button></div>
-      ${dates.length ? `<div class="date-chips">${dates.map(date => `<button type="button" data-action="remove-date" data-id="${item.id}" data-date="${date}" title="Elimină ziua">${formatDate(date)} <span>×</span></button>`).join('')}</div>` : ''}
+  function dailyControl(item, days) {
+    const startDate = state.startDates[item.id] || defaultStartDate();
+    return `<div class="daily-control">
+      <label class="daily-start">${icon('calendar')}<span><strong>Data de începere</strong><small>Prima zi a perioadei de promovare.</small></span><input type="date" min="${today}" value="${startDate}" data-start-date="${item.id}" aria-label="Data de începere pentru ${escapeHtml(item.label)}"></label>
+      <div class="daily-days">${icon('repeat')}<span><strong>Număr de zile</strong><small>${days} ${days === 1 ? 'zi' : 'zile'} consecutive · ${lei(days * item.price)}</small></span><div class="stepper" aria-label="Număr de zile pentru ${escapeHtml(item.label)}"><button type="button" data-action="day" data-id="${item.id}" data-delta="-1" aria-label="Scade o zi">−</button><output>${days}</output><button type="button" data-action="day" data-id="${item.id}" data-delta="1" aria-label="Adaugă o zi">+</button></div></div>
     </div>`;
+  }
+
+  function itemNoteControl(id, label) {
+    const note = state.itemNotes[id] || '';
+    return `<label class="item-note">${icon('blog')}<span><strong>Notă pentru acest serviciu</strong><small>Scrie orice cerință, preferință sau detaliu important.</small></span><textarea rows="2" maxlength="600" data-item-note="${id}" placeholder="Ex.: Pentru ${escapeHtml(label)}, aș vrea…">${escapeHtml(note)}</textarea></label>`;
   }
 
   function formatDate(value) {
@@ -216,7 +241,7 @@
     return `<section class="category" id="category-${category.id}">
       <header class="category-heading"><div class="category-icon">${icon(category.icon)}</div><div><p>${category.eyebrow}</p><h2>${category.title}</h2><span>${category.description}</span></div></header>
       ${category.notice ? `<div class="category-notice"><b>Notă importantă</b><span>${category.notice}</span></div>` : ''}
-      <div class="bundle-list">${category.bundles.map(bundle => `<section class="bundle"><header><div><h3>${bundle.title}</h3><p>${bundle.description}</p></div><span>${bundle.badge}</span></header><div class="option-list">${bundle.items.map(renderItem).join('')}</div></section>`).join('')}</div>
+      <div class="bundle-list">${category.bundles.map(bundle => `<section class="bundle"><header><div><h3>${bundle.title}</h3><p>${bundle.description}</p></div><span>${bundle.badge}</span></header>${bundle.budgetNotice ? `<div class="ad-budget-note">${icon('wallet')}<p><strong>Bugetul reclamelor se achită separat</strong><span>${escapeHtml(bundle.budgetNotice)}</span></p></div>` : ''}<div class="option-list">${bundle.items.map(renderItem).join('')}</div></section>`).join('')}</div>
     </section>`;
   }
 
@@ -228,7 +253,7 @@
       <header class="category-heading"><div class="category-icon">${icon(category.icon)}</div><div><p>${category.eyebrow}</p><h2>${category.title}</h2><span>${category.description}</span></div></header>
       <section class="bundle store-packages"><header><div><h3>1. Alege dimensiunea magazinului</h3><p>Poți selecta un singur pachet de bază.</p></div>${pack ? '<button class="text-button" type="button" data-action="clear-store">Elimină pachetul</button>' : '<span>Un singur pachet</span>'}</header>
         <div class="package-grid">${config.store.packages.map(option => `<button type="button" class="package-card ${state.storePackage === option.id ? 'selected' : ''}" data-action="store-package" data-id="${option.id}"><span class="package-check">${icon('check')}</span><span class="package-symbol">${icon('bag')}</span><small>MAGAZIN ONLINE</small><strong>${option.label}</strong><b>${lei(option.price)}</b><p>${option.detail}</p></button>`).join('')}</div>
-        ${pack ? `<div class="package-start">${startDateControl('store_package','Data începerii magazinului')}</div>` : ''}
+        ${pack ? `<div class="package-start">${startDateControl('store_package','Data începerii magazinului')}${itemNoteControl('store_package',`Magazin online · ${pack.label}`)}</div>` : ''}
       </section>
       <section class="bundle ${extrasDisabled ? 'bundle-disabled' : ''}"><header><div><h3>2. Alege modulele suplimentare</h3><p>${extrasDisabled ? 'Selectează mai întâi un pachet de magazin.' : 'Modulele selectate pot activa automat discountul de 10% sau 15%.'}</p></div><span>${discount.count} subopțiuni</span></header>
         <div class="option-list">${config.store.extras.map(renderItem).join('')}</div>
@@ -250,7 +275,7 @@
       <section class="bundle export-bundle"><header><div><h3>Exporturi Excel &amp; PDF</h3><p>50 lei pentru fiecare secțiune, cu plafon automat de 200 lei pentru pachetul complet.</p></div><span>${exports.length ? lei(exportCost) : 'Neselectat'}</span></header>
         <div class="export-grid">${config.automation.exportSections.map(option => `<button type="button" class="export-chip ${exports.includes(option.id) ? 'selected' : ''}" data-action="export" data-id="${option.id}"><span>${icon('check')}</span>${option.label}</button>`).join('')}</div>
         ${exports.length >= 4 ? '<p class="export-cap">✓ Pachetul complet este activ: costul rămâne 200 lei indiferent de câte secțiuni mai alegi.</p>' : `<p class="export-cap muted">Mai alege ${4-exports.length} ${4-exports.length === 1 ? 'secțiune' : 'secțiuni'} pentru plafonul de 200 lei.</p>`}
-        ${exports.length ? `<div class="package-start">${startDateControl('exports','Data începerii exporturilor')}</div>` : ''}
+        ${exports.length ? `<div class="package-start">${startDateControl('exports','Data începerii exporturilor')}${itemNoteControl('exports','Exporturi Excel & PDF')}</div>` : ''}
       </section>
     </section>`;
   }
@@ -274,6 +299,12 @@
     const target = new Date(year, month - 1 + offset, 1);
     const lastDay = new Date(target.getFullYear(), target.getMonth() + 1, 0).getDate();
     return `${target.getFullYear()}-${String(target.getMonth()+1).padStart(2,'0')}-${String(Math.min(day,lastDay)).padStart(2,'0')}`;
+  }
+
+  function dateAddDays(startDate, offset) {
+    const [year, month, day] = startDate.split('-').map(Number);
+    const date = new Date(year, month - 1, day + offset);
+    return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
   }
 
   function monthLabel(key, index) {
@@ -324,12 +355,13 @@
           addCharge(dueDate.slice(0,7),`${item.label} · ${formatDate(dueDate)}`,price,{recurring:true});
         }
       } else if (item.billing === 'daily') {
-        const dates = state.dates[item.id] || [];
-        if (dates.length) {
-          lines.push({id:item.id,label:item.label,total:price*dates.length,meta:`${dates.length} ${dates.length === 1 ? 'zi' : 'zile'} × ${lei(price)}`});
-          dates.forEach(date => addCharge(date.slice(0,7),`${item.label} · ${formatDate(date)}`,price,{daily:true}));
-        } else {
-          lines.push({id:item.id,label:item.label,total:0,meta:'Nicio zi selectată',pending:true});
+        const days = clamp(state.dayCounts[item.id], 1, 366);
+        const serviceDate = state.startDates[item.id] || defaultStartDate();
+        const endDate = dateAddDays(serviceDate, days - 1);
+        lines.push({id:item.id,label:item.label,total:price*days,meta:`${days} ${days === 1 ? 'zi' : 'zile'} × ${lei(price)} · ${formatDate(serviceDate)}${days > 1 ? ` – ${formatDate(endDate)}` : ''}`});
+        for (let offset=0; offset<days; offset++) {
+          const date = dateAddDays(serviceDate, offset);
+          addCharge(date.slice(0,7),`${item.label} · ${formatDate(date)}`,price,{daily:true});
         }
       }
     }
@@ -489,13 +521,15 @@
         delete state.selected[other];
         delete state.months[other];
         delete state.dates[other];
+        delete state.dayCounts[other];
         delete state.startDates[other];
+        delete state.itemNotes[other];
       });
     }
-    if(turnOn){state.selected[id]=true;if(item.billing==='monthly')state.months[id]=item.defaultMonths||item.minMonths||1;if(item.billing==='daily')state.dates[id]||=[];else state.startDates[id]||=defaultStartDate();}
-    else {delete state.selected[id];delete state.months[id];delete state.dates[id];delete state.startDates[id];if(id==='seo_basic')delete state.selected.seo_basic_monitor;if(id==='store_email')delete state.selected.store_status;if(id==='store_billing')delete state.selected.store_spv;}
+    if(turnOn){state.selected[id]=true;if(item.billing==='monthly')state.months[id]=item.defaultMonths||item.minMonths||1;if(item.billing==='daily')state.dayCounts[id]||=1;state.startDates[id]||=defaultStartDate();}
+    else {delete state.selected[id];delete state.months[id];delete state.dates[id];delete state.dayCounts[id];delete state.startDates[id];delete state.itemNotes[id];if(id==='seo_basic')delete state.selected.seo_basic_monitor;if(id==='store_email')delete state.selected.store_status;if(id==='store_billing')delete state.selected.store_spv;}
     enforceDependencies(state,turnOn);
-    allItems.forEach(option=>{if(selected(option.id)&&option.billing!=='daily')state.startDates[option.id]||=defaultStartDate();});
+    allItems.forEach(option=>{if(selected(option.id))state.startDates[option.id]||=defaultStartDate();});
     renderCatalog(); renderSummary(); scheduleSave();
   }
 
@@ -512,14 +546,10 @@
       const item=items[id], current=state.months[id]||item.minMonths||1;
       state.months[id]=clamp(current+Number(button.dataset.delta),item.minMonths||1,24);renderCatalog();renderSummary();scheduleSave();
     }
-    if(action==='add-date') {
-      const input=document.querySelector(`[data-date-input="${id}"]`); if(!input?.value){toast('Alege mai întâi o dată din calendar.');return;}
-      state.dates[id]=[...new Set([...(state.dates[id]||[]),input.value])].sort();renderCatalog();renderSummary();scheduleSave();
-    }
-    if(action==='remove-date') {state.dates[id]=(state.dates[id]||[]).filter(date=>date!==button.dataset.date);renderCatalog();renderSummary();scheduleSave();}
+    if(action==='day') {state.dayCounts[id]=clamp((state.dayCounts[id]||1)+Number(button.dataset.delta),1,366);renderCatalog();renderSummary();scheduleSave();}
     if(action==='store-package') {state.storePackage=id;state.startDates.store_package||=defaultStartDate();renderCatalog();renderSummary();scheduleSave();}
-    if(action==='clear-store') {state.storePackage='';delete state.startDates.store_package;config.store.extras.forEach(item=>{delete state.selected[item.id];delete state.startDates[item.id];});renderCatalog();renderSummary();scheduleSave();}
-    if(action==='export') {state.exportSections=state.exportSections.includes(id)?state.exportSections.filter(value=>value!==id):[...state.exportSections,id];if(state.exportSections.length)state.startDates.exports||=defaultStartDate();else delete state.startDates.exports;renderCatalog();renderSummary();scheduleSave();}
+    if(action==='clear-store') {state.storePackage='';delete state.startDates.store_package;delete state.itemNotes.store_package;config.store.extras.forEach(item=>{delete state.selected[item.id];delete state.startDates[item.id];delete state.itemNotes[item.id];});renderCatalog();renderSummary();scheduleSave();}
+    if(action==='export') {state.exportSections=state.exportSections.includes(id)?state.exportSections.filter(value=>value!==id):[...state.exportSections,id];if(state.exportSections.length)state.startDates.exports||=defaultStartDate();else {delete state.startDates.exports;delete state.itemNotes.exports;}renderCatalog();renderSummary();scheduleSave();}
   });
 
   document.addEventListener('change',event=>{
@@ -528,9 +558,37 @@
     renderCatalog();renderSummary();scheduleSave();
   });
 
+  document.addEventListener('input',event=>{
+    const input=event.target.closest('[data-item-note]'); if(!input) return;
+    state.itemNotes[input.dataset.itemNote]=input.value.slice(0,600);
+    scheduleSave();
+  });
+
   $('#client-name').addEventListener('input',event=>{state.clientName=event.target.value.slice(0,100);scheduleSave();});
   $('#start-month').addEventListener('change',event=>{state.startMonth=event.target.value||currentMonth();renderSummary();scheduleSave();});
   $('#selection-notes').addEventListener('input',event=>{state.notes=event.target.value.slice(0,1500);scheduleSave();});
+  $('#download-configuration').addEventListener('click',()=>{
+    const plan=calculatePlan();
+    const payload={
+      generatedAt:new Date().toISOString(),
+      clientName:state.clientName,
+      currency:config.currency,
+      startMonth:state.startMonth,
+      total:plan.total,
+      gross:plan.gross,
+      discount:plan.discount,
+      selectedServices:plan.lines.map(line=>({id:line.id,name:line.label,total:line.total,details:line.meta,note:state.itemNotes[line.id]||(packageById(line.id)?state.itemNotes.store_package:'')||''})),
+      paymentsByMonth:plan.months.map(month=>({month:month.key,label:month.label,total:month.total,items:month.charges.map(charge=>({name:charge.label,amount:charge.amount}))})),
+      notes:state.notes,
+      configuration:state
+    };
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement('a');
+    link.href=url; link.download=`configuratie-cab-it-${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(link); link.click(); link.remove(); URL.revokeObjectURL(url);
+    toast('Configurația a fost descărcată.');
+  });
   $('#reset-selection').addEventListener('click',()=>{
     if(!window.confirm('Resetezi toate serviciile, datele și observațiile selectate?'))return;
     state=defaultState();

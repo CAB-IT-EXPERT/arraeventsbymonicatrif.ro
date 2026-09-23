@@ -68,11 +68,27 @@ function validate_state(mixed $raw): array {
             sort($dates[$id]);
         }
     }
+    $dayCounts = [];
+    if (isset($raw['dayCounts']) && is_array($raw['dayCounts'])) {
+        foreach ($raw['dayCounts'] as $id => $count) {
+            if (isset($daily[$id], $selected[$id])) $dayCounts[$id] = max(1, min(366, (int)$count));
+        }
+    }
     $startDates = [];
     $allowedStartIds = $allowedSet + array_fill_keys(['store_package','exports'], true);
     if (isset($raw['startDates']) && is_array($raw['startDates'])) {
         foreach ($raw['startDates'] as $id => $value) {
             if (isset($allowedStartIds[$id]) && is_string($value) && valid_date($value)) $startDates[$id] = $value;
+        }
+    }
+    $itemNotes = [];
+    $allowedNoteIds = $allowedSet + array_fill_keys(['store_package','exports'], true);
+    if (isset($raw['itemNotes']) && is_array($raw['itemNotes'])) {
+        foreach ($raw['itemNotes'] as $id => $value) {
+            if (isset($allowedNoteIds[$id]) && is_string($value)) {
+                $note = clean_text($value, 600);
+                if ($note !== '') $itemNotes[$id] = $note;
+            }
         }
     }
 
@@ -91,9 +107,9 @@ function validate_state(mixed $raw): array {
     elseif (isset($selected['seo_advanced'])) unset($selected['seo_pro']);
     if (isset($selected['blog_standard'])) unset($selected['blog_seo']);
 
-    foreach ($allowedItems as $id) if (!isset($selected[$id])) unset($startDates[$id]);
-    if (!$storePackage) unset($startDates['store_package']);
-    if (!$exportSections) unset($startDates['exports']);
+    foreach ($allowedItems as $id) if (!isset($selected[$id])) { unset($startDates[$id]); unset($itemNotes[$id]); }
+    if (!$storePackage) { unset($startDates['store_package']); unset($itemNotes['store_package']); }
+    if (!$exportSections) { unset($startDates['exports']); unset($itemNotes['exports']); }
 
     return [
         'version' => 1,
@@ -102,7 +118,9 @@ function validate_state(mixed $raw): array {
         'selected' => $selected,
         'months' => $months,
         'dates' => $dates,
+        'dayCounts' => $dayCounts,
         'startDates' => $startDates,
+        'itemNotes' => $itemNotes,
         'storePackage' => $storePackage,
         'exportSections' => array_keys($exportSections),
         'notes' => clean_text($raw['notes'] ?? '', 1500)
