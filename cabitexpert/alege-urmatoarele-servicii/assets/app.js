@@ -115,9 +115,35 @@
       calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4m8-4v4M3 10h18"/>',
       repeat:'<path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4m14-1v2a3 3 0 0 1-3 3H3"/>',
       once:'<path d="M12 3v18M8 7h6a3 3 0 0 1 0 6h-4a3 3 0 0 0 0 6h6"/>',
+      chart:'<path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/>',
+      search:'<circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M7 10h6m-3-3v6"/>',
+      phone:'<path d="M7 3h3l1.2 5-2 1.3a16 16 0 0 0 5.5 5.5l1.3-2 5 1.2v3a4 4 0 0 1-4 4C9.3 21 3 14.7 3 7a4 4 0 0 1 4-4Z"/>',
+      megaphone:'<path d="m4 13 1 5h3l-1-5m-3 0V8h4l10-4v13L8 13H4Z"/><path d="M18 8a3 3 0 0 1 0 5"/>',
+      play:'<path d="m9 7 8 5-8 5V7Z"/><circle cx="12" cy="12" r="9"/>',
+      mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>',
+      invoice:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 8h6m-6 4h6"/>',
+      stock:'<path d="m4 8 8-4 8 4-8 4-8-4Z"/><path d="m4 8v8l8 4 8-4V8M12 12v8"/>',
+      sheet:'<path d="M5 3h10l4 4v14H5V3Z"/><path d="M14 3v5h5M8 12h8m-8 4h8"/>',
+      blog:'<path d="M4 5h16v14H4V5Z"/><path d="M8 9h8m-8 4h8m-8 3h5"/>',
       check:'<path d="m5 12 4 4L19 6"/>'
     };
     return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name] || paths.check}</svg>`;
+  }
+
+  function serviceIcon(id) {
+    if (id === 'analytics_tools') return icon('chart');
+    if (id.startsWith('seo_')) return icon('search');
+    if (id.startsWith('google_call')) return icon('phone');
+    if (id.startsWith('google_') || id.startsWith('shopping_')) return icon('target');
+    if (id.startsWith('meta_')) return icon('megaphone');
+    if (id.startsWith('tiktok_')) return icon('play');
+    if (id === 'store_email' || id === 'store_newsletter' || id === 'store_status') return icon('mail');
+    if (id === 'store_billing' || id === 'store_spv') return icon('invoice');
+    if (id === 'store_stock') return icon('stock');
+    if (id === 'excel_custom') return icon('sheet');
+    if (id.startsWith('blog_')) return icon('blog');
+    if (id.startsWith('store_')) return icon('bag');
+    return icon('spark');
   }
 
   function renderNav() {
@@ -137,7 +163,7 @@
       <div class="option-main">
         <button class="switch" type="button" role="switch" aria-checked="${isSelected}" data-action="toggle" data-id="${item.id}" ${disabled ? 'disabled' : ''}><span></span></button>
         <div class="option-copy">
-          <div class="option-title-line"><h4>${escapeHtml(item.label)}</h4>${item.recommended ? '<span class="mini-badge">Recomandat</span>' : ''}</div>
+          <div class="option-title-line"><span class="service-glyph">${serviceIcon(item.id)}</span><h4>${escapeHtml(item.label)}</h4>${item.recommended ? '<span class="mini-badge">Recomandat</span>' : ''}</div>
           <div class="price-line"><strong>${item.pricePrefix ? `${item.pricePrefix} ` : ''}${lei(price)}</strong><span>${billingLabel(item.billing)}</span>${item.resultWindow ? `<small>rezultate estimate ${item.resultWindow}</small>` : ''}</div>
         </div>
         <button class="info-button" type="button" aria-label="Explicație pentru ${escapeHtml(item.label)}" aria-expanded="false" data-action="tooltip" data-tip="tip-${item.id}">i</button>
@@ -201,7 +227,7 @@
     return `<section class="category" id="category-${category.id}">
       <header class="category-heading"><div class="category-icon">${icon(category.icon)}</div><div><p>${category.eyebrow}</p><h2>${category.title}</h2><span>${category.description}</span></div></header>
       <section class="bundle store-packages"><header><div><h3>1. Alege dimensiunea magazinului</h3><p>Poți selecta un singur pachet de bază.</p></div>${pack ? '<button class="text-button" type="button" data-action="clear-store">Elimină pachetul</button>' : '<span>Un singur pachet</span>'}</header>
-        <div class="package-grid">${config.store.packages.map(option => `<button type="button" class="package-card ${state.storePackage === option.id ? 'selected' : ''}" data-action="store-package" data-id="${option.id}"><span class="package-check">${icon('check')}</span><small>MAGAZIN ONLINE</small><strong>${option.label}</strong><b>${lei(option.price)}</b><p>${option.detail}</p></button>`).join('')}</div>
+        <div class="package-grid">${config.store.packages.map(option => `<button type="button" class="package-card ${state.storePackage === option.id ? 'selected' : ''}" data-action="store-package" data-id="${option.id}"><span class="package-check">${icon('check')}</span><span class="package-symbol">${icon('bag')}</span><small>MAGAZIN ONLINE</small><strong>${option.label}</strong><b>${lei(option.price)}</b><p>${option.detail}</p></button>`).join('')}</div>
         ${pack ? `<div class="package-start">${startDateControl('store_package','Data începerii magazinului')}</div>` : ''}
       </section>
       <section class="bundle ${extrasDisabled ? 'bundle-disabled' : ''}"><header><div><h3>2. Alege modulele suplimentare</h3><p>${extrasDisabled ? 'Selectează mai întâi un pachet de magazin.' : 'Modulele selectate pot activa automat discountul de 10% sau 15%.'}</p></div><span>${discount.count} subopțiuni</span></header>
