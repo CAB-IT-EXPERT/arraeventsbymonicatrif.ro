@@ -242,3 +242,6 @@ footer{padding-top:36px;padding-bottom:36px;border-color:var(--line)}footer>p{fo
 [hidden]{display:none!important}
 .package-start{display:grid;gap:12px}
 .package-start .item-note{margin:0}
+.bundle-header-badges{display:flex;align-items:flex-end;flex-direction:column;gap:8px;flex-shrink:0}
+.bundle-price-badge{padding:5px 9px;border-radius:6px;color:#4a6c5b;background:#e6efe6;font-size:12px;font-weight:700}
+@media(max-width:480px){.bundle-header-badges{align-items:flex-start}.bundle-header-badges .mini-badge{margin-left:0;max-width:100%}}

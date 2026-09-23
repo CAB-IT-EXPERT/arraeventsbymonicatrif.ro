@@ -143,10 +143,10 @@
         item('store_ui','UI/UX + animații ultra-moderne',0,'once','Aspect premium, tranziții rafinate și o experiență modernă. Prețul depinde de pachet.',{recommended:true,dynamicPrice:'uiPrice'}),
         item('store_email','Email-uri personalizate către client',150,'once','Confirmări de comandă și alte notificări automate.',{recommended:true}),
         item('store_newsletter','Newsletter',100,'once','Mecanism pentru abonați, noutăți, articole și produse.',{recommended:true}),
-        item('store_status','Gestionarea statusurilor comenzilor',150,'once','Statusuri precum Nouă, În procesare, Expediată, Livrată sau Anulată.',{requires:'store_email'}),
+        item('store_status','Gestionarea statusurilor comenzilor',150,'once','Statusuri precum Nouă, În procesare, Expediată, Livrată sau Anulată.',{requires:'store_email',recommended:true}),
         item('store_billing','Program de facturare',500,'once','Emiterea și gestionarea facturilor în fluxul magazinului.',{recommended:true}),
         item('store_stock','Program de gestionare a stocurilor',500,'once','Evidența cantităților și corelarea produselor cu disponibilitatea.',{recommended:true}),
-        item('store_spv','Trimiterea facturilor emise în SPV',600,'once','Transmiterea facturilor către Spațiul Privat Virtual.',{requires:'store_billing'})
+        item('store_spv','Trimiterea facturilor emise în SPV',600,'once','Transmiterea facturilor către Spațiul Privat Virtual.',{requires:'store_billing',recommended:true})
       ]
     },
     automation: {
