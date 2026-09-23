@@ -801,4 +801,23 @@ body.editorial-preview { padding-top: 144px; }
   .site-footer .footer-bottom > a,
   .footer-legal { font-size: 11px; }
   .footer-legal { white-space: normal; }
+
+  /* Keep the mobile menu's closing signature calm and uncluttered. */
+  .mobile-menu .menu-motto {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    margin: 28px auto 0;
+    padding-top: 22px;
+    border-top: 1px solid #eadfce;
+  }
+  .mobile-menu .menu-motto .motto-floral { display: none; }
+  .mobile-menu .menu-motto .signature {
+    max-width: none;
+    margin: 0;
+    color: #9a7748;
+    font-size: clamp(24px, 7vw, 29px);
+    line-height: 1.1;
+    white-space: nowrap;
+  }
 }
