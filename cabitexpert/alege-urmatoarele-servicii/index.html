@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="referrer" content="same-origin">
+  <meta name="theme-color" content="#083f3a">
+  <title>Alege următoarele servicii | CAB-IT Expert</title>
+  <link rel="stylesheet" href="assets/styles.css?v=20260923-3">
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="https://cab-it.ro/" target="_blank" rel="noopener noreferrer" aria-label="CAB-IT Expert">
+      <img src="assets/cab-it-mark.png" width="516" height="484" alt="">
+      <span><strong>CAB-IT Expert</strong><small>Digital Growth &amp; Custom Software</small></span>
+    </a>
+    <div class="top-actions">
+      <div class="save-state" id="save-state" role="status" aria-live="polite">
+        <span class="save-dot"></span><span id="save-label">Se conectează…</span>
+      </div>
+      <button class="reset-button" id="reset-selection" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3m-8 0 1 13h8l1-13M10 11v5m4-5v5"/></svg>
+        <span>Resetează</span>
+      </button>
+      <a class="pdf-button" href="oferta-cab-it-expert-arra-events-2026.pdf" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 18v2h14v-2"/></svg>
+        <span>Descarcă oferta</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker"><span></span> CONFIGURATOR PRIVAT DE SERVICII</p>
+        <h1>Alege ce te ajută<br><em>în etapa următoare.</em></h1>
+        <p class="hero-lead">Bifează doar serviciile potrivite pentru ARRA Events. Totalul, reducerile și distribuția pe luni se actualizează automat.</p>
+        <div class="hero-pills" aria-label="Avantaje">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Salvare automată</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-13v4l3 2"/></svg> Calcul în timp real</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.6 2.8 8 7 10 4.2-2 7-5.4 7-10V6l-7-3Z"/></svg> Pagină neindexată</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-mark"><img src="assets/cab-it-mark.png" width="516" height="484" alt="CAB-IT Expert"></div>
+        <p>OFERTĂ PREGĂTITĂ PENTRU</p>
+        <h2>ARRA Events</h2>
+        <span>23 septembrie 2026 · RON / lei</span>
+        <a href="oferta-cab-it-expert-arra-events-2026.pdf" target="_blank" rel="noopener noreferrer">Vezi oferta integrală <b>↗</b></a>
+      </div>
+    </section>
+
+    <section class="setup-panel" aria-labelledby="setup-title">
+      <div>
+        <p class="section-number">ÎNAINTE SĂ ÎNCEPEM</p>
+        <h2 id="setup-title">Configurează perioada</h2>
+        <p>Alege prima lună afișată în plan, apoi stabilește data exactă de începere pentru fiecare serviciu.</p>
+      </div>
+      <label class="field">
+        <span>Numele selecției</span>
+        <input id="client-name" type="text" maxlength="100" value="ARRA Events by Monica Trif" autocomplete="organization">
+      </label>
+      <label class="field">
+        <span>Prima lună din plan</span>
+        <input id="start-month" type="month">
+      </label>
+    </section>
+
+    <div class="page-grid">
+      <div class="catalog-column">
+        <nav class="category-nav" id="category-nav" aria-label="Categorii de servicii"></nav>
+        <div id="catalog" class="catalog" aria-live="polite"></div>
+        <section class="notes-panel">
+          <div class="notes-icon" aria-hidden="true">✦</div>
+          <div>
+            <label for="selection-notes">Observații pentru CAB-IT Expert</label>
+            <p>Poți nota priorități, întrebări sau ordinea preferată de implementare.</p>
+          </div>
+          <textarea id="selection-notes" maxlength="1500" rows="4" placeholder="Ex.: Aș vrea să începem cu fundația de măsurare și SEO…"></textarea>
+        </section>
+      </div>
+
+      <aside class="summary" id="summary" aria-labelledby="summary-title">
+        <div class="summary-head">
+          <p class="section-number">SELECȚIA TA</p>
+          <h2 id="summary-title">Investiția estimată</h2>
+          <p>Bugetele plătite către Google, Meta sau TikTok nu sunt incluse.</p>
+        </div>
+        <div class="total-card">
+          <span>Total servicii</span>
+          <strong id="grand-total">0 lei</strong>
+          <small id="total-caption">Nu ai selectat încă servicii</small>
+        </div>
+        <div class="discount-card" id="discount-card" hidden>
+          <span class="discount-badge" id="discount-badge">-10%</span>
+          <div><strong>Discount magazin activ</strong><small id="discount-copy"></small></div>
+        </div>
+        <div class="summary-section">
+          <div class="summary-title-row"><h3>Ce ai ales</h3><span id="selected-count">0 opțiuni</span></div>
+          <div id="selected-list" class="selected-list"><p class="empty-state">Alegerile tale vor apărea aici.</p></div>
+        </div>
+        <div class="summary-section">
+          <div class="summary-title-row"><h3>Plata pe luni</h3><span>estimare</span></div>
+          <div id="monthly-plan" class="monthly-plan"><p class="empty-state">Selectează un serviciu pentru a vedea planul.</p></div>
+        </div>
+        <div class="autosave-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a5 5 0 1 1 1-9.9A7 7 0 0 1 21 11a4 4 0 0 1-4 7H7Zm3-5 2 2 4-5"/></svg>
+          <p><strong>Nu trebuie să apeși „Salvează”.</strong> Orice bifă, lună sau zi este păstrată automat pe server.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <button class="mobile-total" id="mobile-total" type="button" aria-controls="summary">
+    <span><small>Total estimat</small><strong id="mobile-total-value">0 lei</strong></span><b>Vezi sumarul ↑</b>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <div class="footer-brand"><img src="assets/cab-it-mark.png" width="516" height="484" alt=""><span><strong>CAB-IT Expert</strong><small>Web · SEO · Ads · Automatizări · Software</small></span></div>
+    <p>Configurator privat pentru ARRA Events · Selecțiile se salvează automat.</p>
+    <a href="oferta-cab-it-expert-arra-events-2026.pdf" download>Descarcă oferta PDF ↓</a>
+  </footer>
+
+  <script src="assets/config.js?v=20260923-3"></script>
+  <script src="assets/app.js?v=20260923-3"></script>
+</body>
+</html>

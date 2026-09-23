@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /cabitexpert/alege-urmatoarele-servicii/
 
 Sitemap: https://arraeventsbymonicatrif.ro/sitemap.xml

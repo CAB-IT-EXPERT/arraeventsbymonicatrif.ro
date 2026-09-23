@@ -1,0 +1,16 @@
+DirectoryIndex index.html
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "same-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'self'; form-action 'self'"
+  Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+</IfModule>
+
+<FilesMatch "^(?:\.|.*\.(?:json|jsonl|log|bak))$">
+  Require all denied
+</FilesMatch>
